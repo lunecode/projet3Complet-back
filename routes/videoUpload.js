@@ -72,8 +72,8 @@ router.delete('/deletedatavideo/:id', (req, res) => {
 // *******************************************************************CRUD de la table travel_information****************************************************************************
 
 
-// Affichage de toutes les données de la table général vidéo ( testé )
-router.get('/getdatatravel', (req, res) => {
+// Affichage de toutes les données de la table travel_information ( testé )
+router.get('/getdatatravelinformation', (req, res) => {
     connection.query('SELECT * FROM travel_information', (err, results) => {
         if (err) {
             res.status(500).send('Erreur lors de la récupération des datas')
@@ -84,7 +84,7 @@ router.get('/getdatatravel', (req, res) => {
 })
 
 // Route pour insérer des données via un POST ( testé )
-router.post('/insertdatatravel', (req, res) => {
+router.post('/insertdatatravelinformation', (req, res) => {
     const formData = req.body
     connection.query('INSERT INTO travel_information SET ?', formData, (err, results) => {
         if (err) {
@@ -96,8 +96,8 @@ router.post('/insertdatatravel', (req, res) => {
 })
 
 
-// Route pour modifier des donneés via une PUT (  testé )
-router.put('/updatedatatravel/:id', (req, res) => {
+// Route pour modifier des donneés via une PUT ( testé )
+router.put('/updatedatatravelinformation/:id', (req, res) => {
     const idTravelInfo = req.params.id
     const formData = req.body
     connection.query('UPDATE travel_information SET ? WHERE id_travel_information = ?', [formData, idTravelInfo], err => {
@@ -113,7 +113,7 @@ router.put('/updatedatatravel/:id', (req, res) => {
 
 
 // Route pour supprimer une données via DELETE ( testé )
-router.delete('/deletedatatravel/:id', (req, res) => {
+router.delete('/deletedatatravelinformation/:id', (req, res) => {
     const idTravelInfo = req.params.id
     connection.query('DELETE FROM travel_information WHERE id_travel_information = ?', [idTravelInfo], err => {
         if (err) {
@@ -134,7 +134,7 @@ router.delete('/deletedatatravel/:id', (req, res) => {
 
 
 
-// Affichage de toutes les données de la table général vidéo (non testé )
+// Affichage de toutes les données de la table travel_step (testé )
 router.get('/getdatatravelstep', (req, res) => {
     connection.query('SELECT * FROM travel_step', (err, results) => {
         if (err) {
@@ -145,7 +145,7 @@ router.get('/getdatatravelstep', (req, res) => {
     })
 })
 
-// Route pour insérer des données via un POST ( non testé )
+// Route pour insérer des données via un POST ( testé )
 router.post('/insertdatatravelstep', (req, res) => {
     const formData = req.body
     connection.query('INSERT INTO travel_step SET ?', formData, (err, results) => {
@@ -158,7 +158,7 @@ router.post('/insertdatatravelstep', (req, res) => {
 })
 
 
-// Route pour modifier des donneés via une PUT (non testé )
+// Route pour modifier des donneés via un PUT (testé )
 router.put('/updatedatatravelstep/:id', (req, res) => {
     const idTravelStep = req.params.id
     const formData = req.body
@@ -174,7 +174,7 @@ router.put('/updatedatatravelstep/:id', (req, res) => {
 
 
 
-// Route pour supprimer une données via DELETE ( non testé )
+// Route pour supprimer une données via DELETE ( testé )
 router.delete('/deletedatatravelstep/:id', (req, res) => {
     const idTravelStep = req.params.id
     connection.query('DELETE FROM travel_step WHERE id_travel_step = ?', [idTravelStep], err => {
