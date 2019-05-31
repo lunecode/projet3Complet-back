@@ -11,6 +11,13 @@ router.get('/', (req, res) => {
 
 // *******************************************************************CRUD de la table general_vidéo****************************************************************************
 
+
+// Column not null :
+// video_title
+// profil_id_profil (fk of table "profil")
+
+
+
 // Affichage de toutes les données de la table général vidéo ( testé )
 router.get('/getdatavideo', (req, res) => {
     connection.query('SELECT * FROM general_video', (err, results) => {
@@ -72,6 +79,13 @@ router.delete('/deletedatavideo/:id', (req, res) => {
 // *******************************************************************CRUD de la table travel_information****************************************************************************
 
 
+// Column not null :
+// continent
+// departure_month
+// departure_year
+// travel_duration
+// general_video_id_general_video ( fk of table "general_video")
+
 // Affichage de toutes les données de la table travel_information ( testé )
 router.get('/getdatatravelinformation', (req, res) => {
     connection.query('SELECT * FROM travel_information', (err, results) => {
@@ -132,6 +146,11 @@ router.delete('/deletedatatravelinformation/:id', (req, res) => {
 
 // *******************************************************************CRUD de la table travel_step****************************************************************************
 
+// Column not null :
+// general_video_id_general_video ( fk of table "general_video")
+
+// linking table : 
+// travel_step_has_change_history_travel_step
 
 
 // Affichage de toutes les données de la table travel_step (testé )
