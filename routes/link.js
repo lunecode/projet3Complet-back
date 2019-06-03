@@ -372,6 +372,83 @@ router.delete('/deletedatafkcomment_has_change_history_like_comment/:id', (req, 
 
 
 
+/***************** route to the link tableprofil_has_following ************************ */
+
+
+
+
+router.get('/getProfil_has_following', (req, res) => {
+    connection.query('SELECT*FROM profil_has_following', (err, results) => {
+      if (err) {
+        res.status(500).send('Erreur lors de la récupération des données');
+      } else {
+        res.json(results);
+      }
+    });
+  });
+  
+  router.post('/postProfil_has_following', (req, res) => {
+    const formData = req.body;
+    connection.query('INSERT INTO profil_has_following SET ?', formData, (err, results) => {
+      if (err) {
+        console.log(err);
+        res.status(500).send("Erreur");
+      } else {
+        res.sendStatus(200);
+      }
+    });
+  });
+  
+  router.delete('/deleteProfil_has_following/', (req, res) => {
+    const idprofil_has_following = req.params.id; 
+    connection.query('DELETE FROM profil_has_following WHERE profil_id_profil= ?', [idprofil_has_following], err => {
+      if (err) {
+        res.status(500).send('Erreur lors de la suppression de profil_has_following');
+      } else {
+        res.sendStatus(200);
+      }
+    });
+  });
+
+
+
+
+ //***************** route to the link  favorites_has_profil ************************ */
+
+ router.get('/get_favorites_has_profil', (req, res) => {
+    connection.query('SELECT*FROM favorites_has_profil', (err, results) => {
+      if (err) {
+        res.status(500).send('Erreur lors de la récupération des données');
+      } else {
+        res.json(results);
+      }
+    });
+  });
+  
+  
+  router.post('/post_favorites_has_profil', (req, res) => {
+    const formData = req.body;
+    connection.query('INSERT INTO favorites_has_profil SET ?', formData, (err, results) => {
+      if (err) {
+        console.log(err);
+        res.status(500).send("Erreur");
+      } else {
+        res.sendStatus(200);
+      }
+    });
+  });
+  
+  router.delete('/delete_favorites_has_profil/:id', (req, res) => {
+    const idprofil_has_following = req.params.id; 
+    connection.query('DELETE FROM favorites_has_profil WHERE favorites_id_favorites= ?', [idprofil_has_following], err => {
+      if (err) {
+        res.status(500).send('Erreur lors de la suppression de favorites_id_favorites');
+      } else {
+        res.sendStatus(200);
+      }
+    });
+  });
+
 
 
 module.exports = router;
