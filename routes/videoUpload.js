@@ -13,8 +13,8 @@ router.get('/', (req, res) => {
 
 
 // Column not null :
-// video_title
-// profil_id_profil (fk of table "profil")
+// > video_title
+// > profil_id_profil (fk of table "profil")
 
 
 

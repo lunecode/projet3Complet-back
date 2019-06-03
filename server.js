@@ -17,6 +17,7 @@ app.use('/home', routes.home);
 app.use('/profil', routes.profil);
 app.use('/video', routes.video);
 app.use('/videoUpload', routes.videoUpload);
+app.use('/link', routes.link);
 
 
 app.get('/', (req, res) => {
