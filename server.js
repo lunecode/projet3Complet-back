@@ -2,8 +2,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const routes = require('./routes/index');
+const cors = require('cors')
 const app = express();
 const port = 3000;
+
+app.use(cors())
 
 app.use(morgan('dev'));
 app.use(morgan(':method :url :status : res [content-length] - : response-time'));
