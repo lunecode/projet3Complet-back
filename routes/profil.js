@@ -303,4 +303,18 @@ router.delete('/deletefollowing', (req, res) => {
   });
 });
 
+//* ********************* route for profil Join general_video ************************* */
+
+router.get('/get_profil_general_video', (req, res) => {
+  connection.query('SELECT lastname, firstname, location FROM profil JOIN general_video on profil.id_profil = general_video.profil_id_profil', (err, results) => {
+    if (err) {
+      res.status(500).send('Erreur lors de la récupération des données');
+    } else {
+      res.json(results);
+    }
+  });
+});
+
+
+
 module.exports = router;
