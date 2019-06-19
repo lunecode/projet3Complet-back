@@ -16,11 +16,23 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
-app.use('/home', routes.home);
+
+
+app.use('/change_history_video', routes.change_history_video);
+app.use('/comment', routes.comment);
+app.use('/contact_request', routes.contact_request);
+app.use('/favorites', routes.favorites);
+app.use('/follower', routes.follower);
+app.use('/following', routes.following);
+app.use('/general_video', routes.general_video);
+app.use('/notification', routes.notification);
+app.use('/liked', routes.liked);
+app.use('/playlist', routes.playlist);
+app.use('/popularity', routes.popularity);
 app.use('/profil', routes.profil);
-app.use('/video', routes.video);
-app.use('/videoUpload', routes.videoUpload);
-app.use('/link', routes.link);
+app.use('/travel_information', routes.travel_information);
+app.use('/travel_step', routes.travel_step);
+app.use('/watch_later', routes.watch_later);
 
 
 app.get('/', (req, res) => {

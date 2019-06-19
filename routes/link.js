@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 //******************************************* */ CRUD  table de liaison profil / change history profil/*********************************************************************************** */
 // récupération des données
 
-router.get('/dataprofilchangehistoryprofil', (req, res) => {
+router.get('/get_profilchangehistoryprofil', (req, res) => {
     connection.query('SELECT * FROM profil_has_change_history_profil ', (err, results) => {
         if (err) {
             res.status(500).send('Erreur lors de la récupération des données');
@@ -24,7 +24,7 @@ router.get('/dataprofilchangehistoryprofil', (req, res) => {
 // Insertion des donneés
 
 
-router.post('/insertprofilchangehistoryprofil', (req, res) => {
+router.post('/insert_profilchangehistoryprofil', (req, res) => {
     const formData = req.body;
     connection.query('INSERT INTO profil_has_change_history_profil SET ?', formData, (err, results) => {
         if (err) {
@@ -37,7 +37,7 @@ router.post('/insertprofilchangehistoryprofil', (req, res) => {
 
 
 //suppression des données
-router.delete('/deleteprofilchangehistoryprofil/:id', (req, res) => {
+router.delete('/delete_profilchangehistoryprofil/:id', (req, res) => {
     const dropChangeHistoryProfil = req.params.id;
     connection.query('DELETE FROM profil_has_change_history_profil WHERE profil_id_profil = ?', [dropChangeHistoryProfil], err => {
         if (err) {
@@ -57,7 +57,7 @@ router.delete('/deleteprofilchangehistoryprofil/:id', (req, res) => {
 
 
 // récupération des données
-router.get('/datawatch_later_has_profil', (req, res) => {
+router.get('/get_watch_later_has_profil', (req, res) => {
     connection.query('SELECT * FROM watch_later_has_profil', (err, results) => {
         if (err) {
             res.status(500).send('Erreur lors de la récupération des données');
@@ -69,7 +69,7 @@ router.get('/datawatch_later_has_profil', (req, res) => {
 
 // Insertion des donneés
 
-router.post('/insertwatch_later_has_profil', (req, res) => {
+router.post('/insert_watch_later_has_profil', (req, res) => {
     const formData = req.body;
     connection.query('INSERT INTO watch_later_has_profil SET ?', formData, (err, results) => {
         if (err) {
@@ -82,7 +82,7 @@ router.post('/insertwatch_later_has_profil', (req, res) => {
 
 //suppression des données
 
-router.delete('/deletewatch_later_has_profil/:id', (req, res) => {
+router.delete('/delete_watch_later_has_profil/:id', (req, res) => {
     const dropWatchlaterHasProfil = req.params.id;
     connection.query('DELETE FROM watch_later_has_profil WHERE watch_later_id_watch_later = ?', [dropWatchlaterHasProfil], err => {
         if (err) {
@@ -102,7 +102,7 @@ router.delete('/deletewatch_later_has_profil/:id', (req, res) => {
 /* *********************CRUD table liaison profil/popularity**********************************/
 
 
-router.get('/profil_has_popularity', (req, res) => {
+router.get('/get_profil_has_popularity', (req, res) => {
     connection.query('SELECT * from profil_has_popularity', (err, results) => {
         if (err) {
             res.status(500).send('Erreur lors de la récupération de la table des liaisons');
@@ -114,7 +114,7 @@ router.get('/profil_has_popularity', (req, res) => {
 
 
 
-router.post('/profil_has_popularity', (req, res) => {
+router.post('/post_profil_has_popularity', (req, res) => {
     const formData = req.body;
     connection.query('INSERT INTO profil_has_popularity SET ?', formData, (err, results) => {
         if (err) {
@@ -127,7 +127,7 @@ router.post('/profil_has_popularity', (req, res) => {
 
 
 
-router.delete('/profil_has_popularity/:id', (req, res) => {
+router.delete('/delete_profil_has_popularity/:id', (req, res) => {
     const dropprofil_has_popularity = req.params.id;
     connection.query('DELETE FROM profil_has_popularity WHERE profil_id_profil = ?', [dropprofil_has_popularity], err => {
         if (err) {
@@ -146,7 +146,7 @@ router.delete('/profil_has_popularity/:id', (req, res) => {
 
 
 
-router.get('/profil_has_change_history_video', (req, res) => {
+router.get('/get_profil_has_change_history_video', (req, res) => {
     connection.query('SELECT * from profil_has_change_history_video', (err, results) => {
         if (err) {
             res.status(500).send('Erreur lors de la récupération de la table des liaisons');
@@ -159,7 +159,7 @@ router.get('/profil_has_change_history_video', (req, res) => {
 
 
 
-router.post('/profil_has_change_history_video', (req, res) => {
+router.post('/post_profil_has_change_history_video', (req, res) => {
     const formData = req.body;
     connection.query('INSERT INTO profil_has_change_history_video SET ?', formData, (err, results) => {
         if (err) {
@@ -173,7 +173,7 @@ router.post('/profil_has_change_history_video', (req, res) => {
 
 
 
-router.delete('/profil_has_change_history_video/:id', (req, res) => {
+router.delete('/delete_profil_has_change_history_video/:id', (req, res) => {
     const dropprofil_has_change_history_video = req.params.id;
     connection.query('DELETE FROM profil_has_change_history_video WHERE profil_id_profil = ?', [dropprofil_has_change_history_video], err => {
         if (err) {
@@ -191,7 +191,7 @@ router.delete('/profil_has_change_history_video/:id', (req, res) => {
 
 
 // requete get profil - follower
-router.get('/getprofilfollower', (req, res) => {
+router.get('/get_profilfollower', (req, res) => {
     // connection to the database, and selection of employees
     connection.query('SELECT * FROM profil_has_follower ', (err, results) => {
         if (err) {
@@ -206,7 +206,7 @@ router.get('/getprofilfollower', (req, res) => {
 
 // requete post profil - follower 
 
-router.post('/postprofilfollower', (req, res) => {
+router.post('/post_profilfollower', (req, res) => {
     const formData = req.body;
     connection.query('INSERT INTO profil_has_follower SET ?', formData, (err, results) => {
         if (err) {
@@ -220,7 +220,7 @@ router.post('/postprofilfollower', (req, res) => {
 
 
 //request delete profil_has_follower
-router.delete('/deleteprofilfollower', (req, res) => {
+router.delete('/delete_profilfollower', (req, res) => {
     const dropProfilFollower = req.params.id;
     connection.query('DELETE FROM profil_has_follower WHERE profil_id_profil = ?', [dropProfilFollower], err => {
         if (err) {
@@ -239,7 +239,7 @@ router.delete('/deleteprofilfollower', (req, res) => {
 // -------------------------***PROFIL PLAYLIST***-------------------------
 // ---------Affichage des données de la table profil - playlist-----------
 
-router.get('/profilplaylist', (req, res) => {
+router.get('/get_profilplaylist', (req, res) => {
     connection.query('SELECT * FROM profil_has_playlist', (err, results) => {
         if (err) {
             res.status(500).send('Erreur de la récupération des données');
@@ -253,7 +253,7 @@ router.get('/profilplaylist', (req, res) => {
 
 // -----------Insérer les données de la table profil - playlist------------
 
-router.post('/profilplaylist', (req, res) => {
+router.post('/post_profilplaylist', (req, res) => {
     const formData = req.body;
     connection.query('INSERT INTO profil_has_playlist SET ?', formData, (err, results) => {
         if (err) {
@@ -267,7 +267,7 @@ router.post('/profilplaylist', (req, res) => {
 
 // ----------Supprimer les données de la table profil - playlist-----------
 
-router.delete('/profilplaylist/:id', (req, res) => {
+router.delete('/delete_profilplaylist/:id', (req, res) => {
     const dropprofil_has_playlist = req.params.id;
     connection.query('DELETE FROM profil_has_playlist WHERE profil_id_profil = ?', [dropprofil_has_playlist], err => {
         if (err) {
@@ -287,7 +287,7 @@ router.delete('/profilplaylist/:id', (req, res) => {
 
 
 // Affichage de toutes les données de la table travel_step_has_change_history_travel_step ( testé )
-router.get('/getdatafkchangehistorytravelstep', (req, res) => {
+router.get('/get_fkchangehistorytravelstep', (req, res) => {
     connection.query('SELECT * FROM travel_step_has_change_history_travel_step', (err, results) => {
         if (err) {
             res.status(500).send('Erreur lors de la récupération de la table change history travel step')
@@ -300,7 +300,7 @@ router.get('/getdatafkchangehistorytravelstep', (req, res) => {
 
 
 // Route pour insérer des données via un POST ( testé )
-router.post('/insertdatafkchangehistorytravelstep', (req, res) => {
+router.post('/insert_fkchangehistorytravelstep', (req, res) => {
     const formData = req.body
     connection.query('INSERT INTO travel_step_has_change_history_travel_step SET ?', formData, (err, results) => {
         if (err) {
@@ -313,7 +313,7 @@ router.post('/insertdatafkchangehistorytravelstep', (req, res) => {
 
 
 // Route pour supprimer une données via DELETE ( testé )
-router.delete('/deletedatafkchangehistorytravelstep/:id', (req, res) => {
+router.delete('/delete_fkchangehistorytravelstep/:id', (req, res) => {
     const idHistory = req.params.id
     connection.query('DELETE FROM travel_step_has_change_history_travel_step WHERE travel_step_id_travel_step = ?', [idHistory], err => {
         if (err) {
@@ -332,7 +332,7 @@ router.delete('/deletedatafkchangehistorytravelstep/:id', (req, res) => {
 
 
 // Affichage de toutes les données de la table comment_has_change_history_like_comment( testé )
-router.get('/getdatafkcomment_has_change_history_like_comment', (req, res) => {
+router.get('/get_fkcomment_has_change_history_like_comment', (req, res) => {
     connection.query('SELECT * FROM comment_has_change_history_like_comment', (err, results) => {
         if (err) {
             res.status(500).send('Erreur lors de la récupération de la table comment_has_change_history_like_comment')
@@ -343,7 +343,7 @@ router.get('/getdatafkcomment_has_change_history_like_comment', (req, res) => {
 });
 
 // Route pour insérer des données via un POST ( testé )
-router.post('/insertdatafkcomment_has_change_history_like_comment', (req, res) => {
+router.post('/insert_fkcomment_has_change_history_like_comment', (req, res) => {
     const formData = req.body
     connection.query('INSERT INTO comment_has_change_history_like_comment SET ?', formData, (err, results) => {
         if (err) {
@@ -356,7 +356,7 @@ router.post('/insertdatafkcomment_has_change_history_like_comment', (req, res) =
 
 
 // Route pour supprimer une données via DELETE ( testé )
-router.delete('/deletedatafkcomment_has_change_history_like_comment/:id', (req, res) => {
+router.delete('/delete_fkcomment_has_change_history_like_comment/:id', (req, res) => {
     const idCommentHistory = req.params.id
     connection.query('DELETE FROM comment_has_change_history_like_comment WHERE comment_id_comment = ?', [idCommentHistory], err => {
         if (err) {
@@ -377,7 +377,7 @@ router.delete('/deletedatafkcomment_has_change_history_like_comment/:id', (req, 
 
 
 
-router.get('/getProfil_has_following', (req, res) => {
+router.get('/get_profil_has_following', (req, res) => {
     connection.query('SELECT*FROM profil_has_following', (err, results) => {
       if (err) {
         res.status(500).send('Erreur lors de la récupération des données');
@@ -387,7 +387,7 @@ router.get('/getProfil_has_following', (req, res) => {
     });
   });
   
-  router.post('/postProfil_has_following', (req, res) => {
+  router.post('/post_profil_has_following', (req, res) => {
     const formData = req.body;
     connection.query('INSERT INTO profil_has_following SET ?', formData, (err, results) => {
       if (err) {
@@ -399,7 +399,7 @@ router.get('/getProfil_has_following', (req, res) => {
     });
   });
   
-  router.delete('/deleteProfil_has_following/', (req, res) => {
+  router.delete('/delete_profil_has_following/', (req, res) => {
     const idprofil_has_following = req.params.id; 
     connection.query('DELETE FROM profil_has_following WHERE profil_id_profil= ?', [idprofil_has_following], err => {
       if (err) {
