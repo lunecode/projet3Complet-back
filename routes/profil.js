@@ -72,5 +72,17 @@ router.delete('/delete_profil/:id', (req, res) => {
   });
 });
 
+//***************************************************** */ Crud JOIN Profil*********************************************************************************/
+router.get('/get_profil_videaste_home', (req, res) => {
+  connection.query('SELECT * FROM profil LIMIT 1', (err, results) => {
+      if (err) {
+        res.status(500).send('Erreur lors de la récupération des données');
+      }else{
+        res.json(results);
+      }
+    });
+});
+
+
 
 module.exports = router;
