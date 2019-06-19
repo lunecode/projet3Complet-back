@@ -9,6 +9,21 @@ router.get('/', (req, res) => {
 
 //***************************************************** */ Crud Profil*********************************************************************************/
 
+
+// test post données sur la table enum
+
+router.post('/enum', (req, res) => {
+  const formData = req.body;
+  connection.query('INSERT INTO testenum SET ?', formData, (err, results) => {
+    if (err) {
+      res.status(500).send("Erreur lors de l'insertion des données");
+    } else {
+      res.sendStatus(200);
+    }
+  });
+});
+
+
 // récupération des données
 router.get('/get_profil', (req, res) => {
   connection.query('SELECT * FROM profil', (err, results) => {

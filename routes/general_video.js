@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
 });
 
 
-//************************************* */general_video/*********************************************************************************** */
+//***************************************/general_video/*********************************************************************************** */
 
 // récupération des données
 
@@ -16,7 +16,7 @@ router.get('/get_general_video', (req, res) => {
   connection.query('SELECT * FROM general_video', (err, results) => {
       if (err) {
         res.status(500).send('Erreur lors de la récupération des données');
-      }else{
+      } else {
         res.json(results);
       }
     });
