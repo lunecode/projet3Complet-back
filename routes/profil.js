@@ -59,7 +59,7 @@ router.delete('/delete_profil/:id', (req, res) => {
 
 //***************************************************** */ Crud JOIN Profil*********************************************************************************/
 router.get('/get_profil_videaste_home', (req, res) => {
-  connection.query('SELECT * FROM profil LIMIT 1', (err, results) => {
+  connection.query('SELECT * FROM profil ORDER BY RAND() LIMIT 1', (err, results) => {
       if (err) {
         res.status(500).send('Erreur lors de la récupération des données');
       }else{
