@@ -58,14 +58,29 @@ router.delete('/delete_profil/:id', (req, res) => {
 });
 
 //***************************************************** */ Crud JOIN Profil*********************************************************************************/
-router.get('/get_profil_videaste_home', (req, res) => {
-  connection.query('SELECT * FROM profil LIMIT 1', (err, results) => {
-      if (err) {
+router.get('/get_profil_videaste_home/:offsetVideaste', (req, res) => {
+  const offsetVideaste = +req.params.offsetVideaste
+  connection.query('SELECT * FROM profil ORDER BY RAND() LIMIT ? , 4;', [offsetVideaste], (err, results) => {
+      if (err) { 
         res.status(500).send('Erreur lors de la récupération des données');
       }else{
         res.json(results);
       }
     });
+});
+
+// 'SELECT * FROM general_video LIMIT ? , 5;', [offset],
+
+//* ********************* route for profil Join general_video ************************* */
+
+router.get('/get_profil_general_video', (req, res) => {
+  connection.query('SELECT lastname, firstname, location FROM profil JOIN general_video on profil.id_profil = general_video.profil_id_profil', (err, results) => {
+    if (err) {
+      res.status(500).send('Erreur lors de la récupération des données');
+    } else {
+      res.json(results);
+    }
+  });
 });
 
 
