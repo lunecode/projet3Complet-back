@@ -83,8 +83,9 @@ router.get('/get_popularity_liked_general_video_travel_information2', (req, res)
     }
   });
 });
+
 /* ORDER By number_tips LIMIT  */
-router.get('/get_popularity_liked_general_video_travel_information', (req, res) => {
+router.get('/get_popularity_liked_general_video_travel_information_limit', (req, res) => {
   connection.query('SELECT * FROM popularity INNER JOIN liked ON id_popularity=liked.popularity_id_popularity INNER JOIN general_video ON id_general_video=liked.general_video_id_general_video INNER JOIN travel_information ON id_general_video=travel_information.general_video_id_general_video ORDER BY nb_like_popularity ASC LIMIT 5,5 O', (err, results) => {
     if (err) {
       res.status(500).send('Erreur lors de la récupération des populaires');
