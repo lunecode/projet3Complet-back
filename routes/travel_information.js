@@ -60,7 +60,7 @@ router.delete('/delete_travelinformation/:id', (req, res) => {
     })
 })
 
-// ****************************************CRUD de la table travel_information / JOINTURE****************************************
+// **************************************** travel_information / JOINTURE****************************************
 
 // Affichage de toutes les données de la table travel_information et general_video
 router.get('/get_travelinformation_general_video', (req, res) => {
@@ -72,6 +72,20 @@ router.get('/get_travelinformation_general_video', (req, res) => {
         }
     })
 })
+
+
+// INSERT DATA TO TRAVEL_INFORMATION WITH CONTINENT
+router.post('/insert_travelinformationContinent', (req, res) => {
+    const formData = req.body
+    connection.query('INSERT INTO travel_information SET ?', formData, (err, results) => {
+        if (err) {
+            res.status(500).send('Erreur lors de l\'insertion de données')
+        } else {
+            res.sendStatus(200)
+        }
+    })
+})
+
 
 
 

@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
 });
 
 
-//************************************* */general_video/*********************************************************************************** */
+//***************************************/general_video/*********************************************************************************** */
 
 // récupération des données
 
@@ -16,7 +16,7 @@ router.get('/get_general_video', (req, res) => {
   connection.query('SELECT * FROM general_video', (err, results) => {
       if (err) {
         res.status(500).send('Erreur lors de la récupération des données');
-      }else{
+      } else {
         res.json(results);
       }
     });
@@ -69,7 +69,7 @@ router.delete('/delete_general_video/:id', (req, res) => {
 // récupération des données general_video/popularity/liked
 
 router.get('/get_general_video_liked_popularity', (req, res) => {
-  connection.query('SELECT * FROM general_ video INNER JOIN liked ON id_general_video=liked.general_video_id_general_video INNER JOIN popularity ON id_popularity=liked.popularity_id_popularity', (err, results) => {
+  connection.query('SELECT * FROM general_video INNER JOIN liked ON id_general_video=liked.general_video_id_general_video INNER JOIN popularity ON id_popularity=liked.popularity_id_popularity', (err, results) => {
       if (err) {
         res.status(500).send('Erreur lors de la récupération des données');
       }else{
@@ -85,10 +85,23 @@ router.get('/get_general_video_limite/:offset', (req, res) => {
   const offset = +req.params.offset
   connection.query('SELECT * FROM general_video LIMIT ? , 5;', [offset], (err, results) => {
       if (err) {
-        console.log(err);
-        
         res.status(500).send('Erreur lors de la récupération des données');
       }else{
+        res.json(results);
+      }
+    });
+});
+
+
+
+
+// TEST GET VIDEO FOR HOME PAGE WITH COUNTRY
+
+router.get('/get_general_video_home', (req, res) => {
+  connection.query('SELECT * from general_video JOIN travel_information ON id_general_video=travel_information.general_video_id_general_video LIMIT 5', (err, results) => {
+      if (err) {
+        res.status(500).send('Erreur lors de la récupération des données');
+      } else {
         res.json(results);
       }
     });

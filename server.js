@@ -33,6 +33,7 @@ app.use('/profil', routes.profil);
 app.use('/travel_information', routes.travel_information);
 app.use('/travel_step', routes.travel_step);
 app.use('/watch_later', routes.watch_later);
+app.use('/continent', routes.continent);
 
 
 app.get('/', (req, res) => {

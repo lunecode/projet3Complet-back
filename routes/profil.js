@@ -9,6 +9,21 @@ router.get('/', (req, res) => {
 
 //***************************************************** */ Crud Profil*********************************************************************************/
 
+
+// test post données sur la table enum
+
+router.post('/enum', (req, res) => {
+  const formData = req.body;
+  connection.query('INSERT INTO testenum SET ?', formData, (err, results) => {
+    if (err) {
+      res.status(500).send("Erreur lors de l'insertion des données");
+    } else {
+      res.sendStatus(200);
+    }
+  });
+});
+
+
 // récupération des données
 router.get('/get_profil', (req, res) => {
   connection.query('SELECT * FROM profil', (err, results) => {
@@ -60,7 +75,7 @@ router.delete('/delete_profil/:id', (req, res) => {
 //***************************************************** */ Crud JOIN Profil*********************************************************************************/
 router.get('/get_profil_videaste_home/:offsetVideaste', (req, res) => {
   const offsetVideaste = +req.params.offsetVideaste
-  connection.query('SELECT * FROM profil ORDER BY RAND() LIMIT ? , 4;', [offsetVideaste], (err, results) => {
+  connection.query('SELECT * FROM profil ORDER BY RAND() LIMIT ? , 8;', [offsetVideaste], (err, results) => {
       if (err) { 
         res.status(500).send('Erreur lors de la récupération des données');
       }else{
@@ -69,7 +84,7 @@ router.get('/get_profil_videaste_home/:offsetVideaste', (req, res) => {
     });
 });
 
-// 'SELECT * FROM general_video LIMIT ? , 5;', [offset],
+//  connection.query('SELECT * FROM general_video LIMIT ? , 5;', [offset], (err, results) => 
 
 //* ********************* route for profil Join general_video ************************* */
 
