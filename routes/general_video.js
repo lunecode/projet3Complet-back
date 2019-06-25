@@ -85,8 +85,6 @@ router.get('/get_general_video_limite/:offset', (req, res) => {
   const offset = +req.params.offset
   connection.query('SELECT * FROM general_video LIMIT ? , 5;', [offset], (err, results) => {
       if (err) {
-        console.log(err);
-        
         res.status(500).send('Erreur lors de la récupération des données');
       }else{
         res.json(results);
