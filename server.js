@@ -6,6 +6,9 @@ const cors = require('cors')
 const app = express();
 const port = 3000;
 
+const login = require('./routes/auth/login.js')
+const registration = require('./routes/auth/registration.js')
+
 app.use(cors())
 
 app.use(morgan('dev'));
@@ -16,7 +19,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
-
+app.use('/login', login)
+app.use('/registration', registration)
 
 app.use('/change_history_video', routes.change_history_video);
 app.use('/comment', routes.comment);
