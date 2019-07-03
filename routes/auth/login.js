@@ -52,7 +52,7 @@ const getToken = req => {
   return null;
 };
 
-
+// http://localhost:3000/login/protected
 
 Router.post("/protected", (req, res, next) => {
   const token = getToken(req);
