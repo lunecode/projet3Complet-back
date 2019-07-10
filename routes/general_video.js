@@ -81,6 +81,8 @@ router.get('/get_general_video_liked_popularity', (req, res) => {
 
 //************************ */LIMITE /********************************************************** */
 
+//******* RECENT PUBLISHED******* */
+
 router.get('/get_general_video_limite/:offset', (req, res) => {
   const offset = +req.params.offset
   connection.query('SELECT * FROM general_video LIMIT ? , 5;', [offset], (err, results) => {
@@ -92,7 +94,16 @@ router.get('/get_general_video_limite/:offset', (req, res) => {
     });
 });
 
-
+//******* NEXT DESTINATION ******* */
+router.get('/get_general_video_nextdestination', (req, res) => {
+  connection.query('SELECT * from general_video JOIN travel_information ON id_general_video=travel_information.general_video_id_general_video LIMIT 5', (err, results) => {
+    if (err) {
+      res.status(500).send('Erreur lors de la récupération des données');
+    } else {
+      res.json(results);
+    }
+  });
+});
 
 
 // TEST GET VIDEO FOR HOME PAGE WITH COUNTRY
