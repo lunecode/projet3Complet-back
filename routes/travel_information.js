@@ -86,12 +86,62 @@ router.post('/insert_travelinformationContinent', (req, res) => {
     })
 })
 
+////////////////////////  TO GET COUNTRIES IN CONTINENT    ///////////////////////
 
+///////////  AFRIQUE ///////////////
+router.get('/get_travelinformation_continent_afrique', (req, res) => {
+    connection.query('SELECT * FROM travel_information JOIN continent ON id_continent=continent_id_continent WHERE continent_id_continent=2 LIMIT 3', (err, results) => {
+        if (err) {
+            res.status(500).send('Erreur lors de la récupération des datas')
+        } else {
+            res.json(results)
+        }
+    })
+})
 
+///////////  ASIE OCEANIE ///////////////
+router.get('/get_travelinformation_continent_asieoceanie', (req, res) => {
+    connection.query('SELECT * FROM travel_information JOIN continent ON id_continent=continent_id_continent WHERE continent_id_continent=4 LIMIT 3', (err, results) => {
+        if (err) {
+            res.status(500).send('Erreur lors de la récupération des datas')
+        } else {
+            res.json(results)
+        }
+    })
+})
 
+///////////  EUROPE ///////////////
+router.get('/get_travelinformation_continent_europe', (req, res) => {
+    connection.query('SELECT * FROM travel_information JOIN continent ON id_continent=continent_id_continent WHERE continent_id_continent=5 LIMIT 3', (err, results) => {
+        if (err) {
+            res.status(500).send('Erreur lors de la récupération des datas')
+        } else {
+            res.json(results)
+        }
+    })
+})
 
+///////////  AMERIQUE ///////////////
+router.get('/get_travelinformation_continent_amerique', (req, res) => {
+    connection.query('SELECT * FROM travel_information JOIN continent ON id_continent=continent_id_continent WHERE continent_id_continent=3 LIMIT 3', (err, results) => {
+        if (err) {
+            res.status(500).send('Erreur lors de la récupération des datas')
+        } else {
+            res.json(results)
+        }
+    })
+})
 
-
+///////////  AUTRES ///////////////
+router.get('/get_travelinformation_continent_autres', (req, res) => {
+    connection.query('SELECT * FROM travel_information JOIN continent ON id_continent=continent_id_continent WHERE continent_id_continent=1 LIMIT 3', (err, results) => {
+        if (err) {
+            res.status(500).send('Erreur lors de la récupération des datas')
+        } else {
+            res.json(results)
+        }
+    })
+})
 
 module.exports = router;
 
