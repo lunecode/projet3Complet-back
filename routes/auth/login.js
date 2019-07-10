@@ -5,19 +5,19 @@ const bcrypt = require('bcrypt')
 
 const User = require('../../models/User')
 
-process.env.SECRET_KEY = 'secret'  // VOIR OU STOCKER CETTE CLE
+process.env.SECRET_KEY = 'secret'
 
 Router.get("/", (req, res, next) => {
   res.send("Je suis sur la route GET de login");
 })
 
 
-// http://localhost:3000/login/login   TEST A CONFIRMER VIA POSTMAN ET EN FRONT POUR LE TOKEN
+// http://localhost:3000/login/login   TEST OK WITH POSTMAN
 
 Router.post('/login', (req, res) => {
   console.log(req.body)
   User.findOne({
-    where: { email: req.body.email }  // MUST SEE IF PASSWORD VERIFICATION IS NECESSARY
+    where: { email: req.body.email }
   })
     .then(user => {
       if (user) {

@@ -24,6 +24,6 @@ module.exports = db.sequelize.define(
   },
   {
     tableName: 'profil',
-    timestamps: false  // voir l'utilité mais ne marche pas sans
+    timestamps: false
   }
 )
