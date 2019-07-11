@@ -73,6 +73,17 @@ router.get('/get_travelinformation_general_video', (req, res) => {
     })
 })
 
+// Affichage de toutes les données de la table travel_information et general_video LIMIT BACK
+router.get('/get_travelinformation_general_video/:offset', (req, res) => {
+    const offset = +req.params.offset
+    connection.query('SELECT * FROM travel_information JOIN general_video ON id_general_video=travel_information.general_video_id_general_video LIMIT ? , 5;', [offset], (err, results) => {
+        if (err) {
+            res.status(500).send('Erreur lors de la récupération des datas')
+        } else {
+            res.json(results)
+        }
+    })
+})
 
 // INSERT DATA TO TRAVEL_INFORMATION WITH CONTINENT
 router.post('/insert_travelinformationContinent', (req, res) => {
