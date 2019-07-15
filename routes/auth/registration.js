@@ -11,7 +11,7 @@ Router.get("/", (req, res, next) => {
 })
 
 
-//  http://localhost:3000/registration/registration    TEST OK VIA POSTMAN
+//  http://localhost:3000/registration/registration    TEST OK WITH POSTMAN
 
 
 Router.post('/registration', (req, res) => {

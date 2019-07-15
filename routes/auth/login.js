@@ -7,6 +7,7 @@ const User = require('../../models/User')
 
 process.env.SECRET_KEY = 'secret'
 
+
 Router.get("/", (req, res, next) => {
   res.send("Je suis sur la route GET de login");
 })
