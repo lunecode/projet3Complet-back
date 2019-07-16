@@ -20,6 +20,9 @@ module.exports = db.sequelize.define(
     },
     email: {
       type: Sequelize.STRING
+    },
+    isAdmin: {
+      type: Sequelize.INTEGER
     }
   },
   {

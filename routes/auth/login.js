@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt')
 
 const User = require('../../models/User')
 
-process.env.SECRET_KEY = 'secret'
+process.env.SECRET_KEY = 'f121fd12fd13fdgd3fdf1d2fdsd123fd'
 
 
 Router.get("/", (req, res, next) => {
@@ -13,19 +13,22 @@ Router.get("/", (req, res, next) => {
 })
 
 
+
+
 // http://localhost:3000/login/login   TEST OK WITH POSTMAN
 
 Router.post('/login', (req, res) => {
-  console.log(req.body)
+  // console.log(req.body)
   User.findOne({
     where: { email: req.body.email }
   })
     .then(user => {
       if (user) {
+        // console.log(user)
         if (bcrypt.compareSync(req.body.password, user.password)) {
-          let tokenUserinfo = { username: user.username, status: user.statut }
+          let tokenUserinfo = { username: user.username, id_profil: user.id_profil, isAdmin: user.isAdmin }
           let token = jwt.sign(tokenUserinfo, process.env.SECRET_KEY, {
-            expiresIn: 1440
+            expiresIn: 86400  // expires in 24 hours
           })
           res.header("Access-Control-Expose-Headers", "x-access-token")
           res.set("x-access-token", token)
@@ -41,11 +44,12 @@ Router.post('/login', (req, res) => {
 })
 
 
+
+
+// http://localhost:3000/login/protected
+
 const getToken = req => {
-  if (
-    req.headers.authorization &&
-    req.headers.authorization.split(" ")[0] === "Bearer"
-  ) {
+  if ( req.headers.authorization && req.headers.authorization.split(" ")[0] === "Bearer" ) {
     return req.headers.authorization.split(" ")[1]
   } else if (req.query && req.query.token) {
     return req.query.token;
@@ -53,22 +57,28 @@ const getToken = req => {
   return null;
 };
 
-// http://localhost:3000/login/protected
 
 Router.post("/protected", (req, res, next) => {
   const token = getToken(req);
-  const objectTests = { // exemple de data à appeler par la bdd 
-    test: 'ok',
-  }
+  const objectTests = { test: 'ok' }   // exemple de data appeler par la bdd 
+
   jwt.verify(token, process.env.SECRET_KEY, (err, decoded) => {
     if (err) {
       console.log(err)
       return res.status(200).send({ mess: 'N\'a pas acces au donnees' })
     }
     console.log('decode', decoded)
-    return res.status(200).send({ mess: 'Donne du user', objectTests })
+    return res.status(200).send({ mess: 'Token verifié', objectTests })
   })
 })
+
+
+
+
+// LOGOUT NON TESTE
+Router.get('/logout', function(req, res) {
+  res.status(200).send({ auth: false, token: null });
+});
 
 
 module.exports = Router

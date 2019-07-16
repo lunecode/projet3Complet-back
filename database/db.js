@@ -4,7 +4,7 @@ const db = {}
 const sequelize = new Sequelize('tripitto', 'root', 'Azerty@78', {
   host: 'localhost',
   dialect: 'mysql',
-  operatorsAliases: false,
+  // operatorsAliases: false,
 
   pool: {
     max: 5,

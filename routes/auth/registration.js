@@ -20,6 +20,7 @@ Router.post('/registration', (req, res) => {
     lastname: req.body.lastname,
     email: req.body.email,
     password: req.body.password,
+    isAdmin: 0
   }
 
   User.findOne({
