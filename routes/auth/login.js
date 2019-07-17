@@ -68,7 +68,8 @@ Router.post("/protected", (req, res, next) => {
       return res.status(200).send({ mess: 'N\'a pas acces au donnees' })
     }
     console.log('decode', decoded)
-    return res.status(200).send({ mess: 'Token verifié', objectTests })
+    return res.status(200).send({ message: 'Token OK' })
+    // return res.status(200).send({ mess: 'Token verifié', objectTests })
   })
 })
 
