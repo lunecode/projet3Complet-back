@@ -160,5 +160,30 @@ router.get('/get_general_video_nextdestination_tauxderemplissage', (req, res) =>
 });
 
 
+router.get('/get_general_video_lim/:offset', (req, res) => {
+  const offset = +req.params.offset
+  connection.query('SELECT * FROM general_video LIMIT ? , 4;', [offset], (err, results) => {
+      if (err) {
+        console.log(err);
+        
+        res.status(500).send('Erreur lors de la récupération des données');
+      }else{
+        res.json(results);
+      }
+    });
+});
+
+router.get('/get_Page_Afrique/:offset', (req, res) => {
+  const offset = +req.params.offset
+  connection.query('SELECT * FROM general_video LIMIT ? , 8;', [offset], (err, results) => {
+      if (err) {
+        console.log(err);
+        
+        res.status(500).send('Erreur lors de la récupération des données');
+      }else{
+        res.json(results);
+      }
+    });
+});
 
 module.exports = router;
