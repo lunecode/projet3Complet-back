@@ -145,4 +145,20 @@ router.get('/get_general_video_nextdestination', (req, res) => {
   });
 });
 
+
+
+// GET TAUX DE REMPLISSAGE 
+
+router.get('/get_general_video_nextdestination_tauxderemplissage', (req, res) => {
+  connection.query('SELECT video_title, video_link,video_user,video_duration, ROUND(100-(ISNULL(NULLIF(video_title,"")) + ISNULL(NULLIF(video_link,"")) + ISNULL(NULLIF(video_user,"")) + ISNULL(NULLIF(video_duration,"")))*100/5) AS tx_remplissage FROM general_video', (err, results) => {
+    if (err) {
+      res.status(500).send('Erreur lors de la récupération des données');
+    } else {
+      res.json(results);
+    }
+  });
+});
+
+
+
 module.exports = router;
