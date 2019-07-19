@@ -28,7 +28,7 @@ Router.post('/login', (req, res) => {
         if (bcrypt.compareSync(req.body.password, user.password)) {
           let tokenUserinfo = { username: user.username, id_profil: user.id_profil, isAdmin: user.isAdmin }
           let token = jwt.sign(tokenUserinfo, process.env.SECRET_KEY, {
-            expiresIn: 86400  // expires in 24 hours
+            expiresIn: '1h'
           })
           res.header("Access-Control-Expose-Headers", "x-access-token")
           res.set("x-access-token", token)

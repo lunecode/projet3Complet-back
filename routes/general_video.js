@@ -145,4 +145,23 @@ router.get('/get_general_video_nextdestination', (req, res) => {
   });
 });
 
+
+// ***********************************GET VIDEO WITH ID PROFIL******************************************
+
+
+
+// TEST OK WITH POSTMAN
+router.get('/get_video_id_profil/:id', (req, res) => {
+  const getVideoProfil = req.params.id
+  connection.query('SELECT * FROM general_video WHERE profil_id_profil = ?', [getVideoProfil], (err, results) => {
+    if (err) {
+      res.status(500).send('Erreur dans la récupération des données');
+    } else {
+      res.json(results)
+    }
+  })
+})
+
+
+
 module.exports = router;
