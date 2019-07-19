@@ -113,7 +113,7 @@ router.get('/get_popularity_liked_general_video_travel_information/:offset', (re
 /* ORDER By number_tips LIMITE*/
 router.get('/get_popularity_liked_general_video_travel_information2/:offsetBestplan', (req, res) => {
   const offsetBestplan= + req.params.offsetBestplan
-  connection.query('SELECT *, ROUND(100-(ISNULL(NULLIF(video_title,"")) + ISNULL(NULLIF(video_description,"")) + ISNULL(NULLIF(cover_picture,"")) + ISNULL(NULLIF(link_equipment,"")) + ISNULL(NULLIF(video_link,"")))*100/5) AS tx_remplissage FROM general_video INNER JOIN liked ON id_general_video=liked.general_video_id_general_video INNER JOIN popularity ON id_popularity=liked.popularity_id_popularity INNER JOIN travel_information ON id_general_video=travel_information.general_video_id_general_video ORDER BY nb_like_popularity ASC LIMIT ? , 4;', [offsetBestplan], (err, results) => {
+  connection.query('SELECT *, ROUND(100-(ISNULL(NULLIF(video_title,"")) + ISNULL(NULLIF(video_description,"")) + ISNULL(NULLIF(cover_picture,"")) + ISNULL(NULLIF(link_equipment,"")) + ISNULL(NULLIF(video_link,"")))*100/5) AS tx_remplissage FROM general_video INNER JOIN liked ON id_general_video=liked.general_video_id_general_video INNER JOIN popularity ON id_popularity=liked.popularity_id_popularity INNER JOIN travel_information ON id_general_video=travel_information.general_video_id_general_video ORDER BY tx_remplissage DESC LIMIT ? , 4;', [offsetBestplan], (err, results) => {
     if (err) {
       res.status(500).send('Erreur lors de la récupération des populaires');
     } else {
@@ -126,7 +126,7 @@ router.get('/get_popularity_liked_general_video_travel_information2/:offsetBestp
 
 /* ORDER By AUTRES*/
 router.get('/get_popularity_liked_general_video_travel_information_continent_autres', (req, res) => {
-  connection.query('SELECT * FROM popularity INNER JOIN liked ON id_popularity=liked.popularity_id_popularity INNER JOIN general_video ON id_general_video=liked.general_video_id_general_video INNER JOIN travel_information ON id_general_video=travel_information.general_video_id_general_video INNER JOIN continent ON id_continent=travel_information.continent_id_continent WHERE continent_id_continent=1 ORDER BY nb_like_popularity ASC LIMIT 12', (err, results) => {
+  connection.query('SELECT *, ROUND(100-(ISNULL(NULLIF(video_title,"")) + ISNULL(NULLIF(video_description,"")) + ISNULL(NULLIF(cover_picture,"")) + ISNULL(NULLIF(link_equipment,"")) + ISNULL(NULLIF(video_link,"")))*100/5) AS tx_remplissage FROM general_video INNER JOIN liked ON id_general_video=liked.general_video_id_general_video INNER JOIN popularity ON id_popularity=liked.popularity_id_popularity INNER JOIN travel_information ON id_general_video=travel_information.general_video_id_general_video INNER JOIN continent ON id_continent=travel_information.continent_id_continent WHERE continent_id_continent=1 ORDER BY nb_views DESC LIMIT 12', (err, results) => {
     if (err) {
       res.status(500).send('Erreur lors de la récupération des populaires');
     } else {
@@ -137,7 +137,7 @@ router.get('/get_popularity_liked_general_video_travel_information_continent_aut
 
 /* ORDER By AFRIQUE*/
 router.get('/get_popularity_liked_general_video_travel_information_continent_afrique', (req, res) => {
-  connection.query('SELECT * FROM popularity INNER JOIN liked ON id_popularity=liked.popularity_id_popularity INNER JOIN general_video ON id_general_video=liked.general_video_id_general_video INNER JOIN travel_information ON id_general_video=travel_information.general_video_id_general_video INNER JOIN continent ON id_continent=travel_information.continent_id_continent WHERE continent_id_continent=2 ORDER BY nb_like_popularity ASC LIMIT 12', (err, results) => {
+  connection.query('SELECT *, ROUND(100-(ISNULL(NULLIF(video_title,"")) + ISNULL(NULLIF(video_description,"")) + ISNULL(NULLIF(cover_picture,"")) + ISNULL(NULLIF(link_equipment,"")) + ISNULL(NULLIF(video_link,"")))*100/5) AS tx_remplissage FROM general_video INNER JOIN liked ON id_general_video=liked.general_video_id_general_video INNER JOIN popularity ON id_popularity=liked.popularity_id_popularity INNER JOIN travel_information ON id_general_video=travel_information.general_video_id_general_video INNER JOIN continent ON id_continent=travel_information.continent_id_continent WHERE continent_id_continent=2 ORDER BY nb_views DESC LIMIT 12', (err, results) => {
     if (err) {
       res.status(500).send('Erreur lors de la récupération des populaires');
     } else {
@@ -148,7 +148,7 @@ router.get('/get_popularity_liked_general_video_travel_information_continent_afr
 
 /* ORDER By AMERIQUE*/
 router.get('/get_popularity_liked_general_video_travel_information_continent_amerique', (req, res) => {
-  connection.query('SELECT * FROM popularity INNER JOIN liked ON id_popularity=liked.popularity_id_popularity INNER JOIN general_video ON id_general_video=liked.general_video_id_general_video INNER JOIN travel_information ON id_general_video=travel_information.general_video_id_general_video INNER JOIN continent ON id_continent=travel_information.continent_id_continent WHERE continent_id_continent=3 ORDER BY nb_like_popularity ASC LIMIT 12', (err, results) => {
+  connection.query('SELECT *, ROUND(100-(ISNULL(NULLIF(video_title,"")) + ISNULL(NULLIF(video_description,"")) + ISNULL(NULLIF(cover_picture,"")) + ISNULL(NULLIF(link_equipment,"")) + ISNULL(NULLIF(video_link,"")))*100/5) AS tx_remplissage FROM general_video INNER JOIN liked ON id_general_video=liked.general_video_id_general_video INNER JOIN popularity ON id_popularity=liked.popularity_id_popularity INNER JOIN travel_information ON id_general_video=travel_information.general_video_id_general_video INNER JOIN continent ON id_continent=travel_information.continent_id_continent WHERE continent_id_continent=3 ORDER BY nb_views DESC LIMIT 12', (err, results) => {
     if (err) {
       res.status(500).send('Erreur lors de la récupération des populaires');
     } else {
@@ -159,7 +159,7 @@ router.get('/get_popularity_liked_general_video_travel_information_continent_ame
 
 /* ORDER By ASIE OCEANIE*/
 router.get('/get_popularity_liked_general_video_travel_information_continent_asie_oceanie', (req, res) => {
-  connection.query('SELECT * FROM popularity INNER JOIN liked ON id_popularity=liked.popularity_id_popularity INNER JOIN general_video ON id_general_video=liked.general_video_id_general_video INNER JOIN travel_information ON id_general_video=travel_information.general_video_id_general_video INNER JOIN continent ON id_continent=travel_information.continent_id_continent WHERE continent_id_continent=4 ORDER BY nb_like_popularity ASC LIMIT 12', (err, results) => {
+  connection.query('SELECT *, ROUND(100-(ISNULL(NULLIF(video_title,"")) + ISNULL(NULLIF(video_description,"")) + ISNULL(NULLIF(cover_picture,"")) + ISNULL(NULLIF(link_equipment,"")) + ISNULL(NULLIF(video_link,"")))*100/5) AS tx_remplissage FROM general_video INNER JOIN liked ON id_general_video=liked.general_video_id_general_video INNER JOIN popularity ON id_popularity=liked.popularity_id_popularity INNER JOIN travel_information ON id_general_video=travel_information.general_video_id_general_video INNER JOIN continent ON id_continent=travel_information.continent_id_continent WHERE continent_id_continent=4 ORDER BY nb_views DESC LIMIT 12', (err, results) => {
     if (err) {
       res.status(500).send('Erreur lors de la récupération des populaires');
     } else {
@@ -170,7 +170,7 @@ router.get('/get_popularity_liked_general_video_travel_information_continent_asi
 
 /* ORDER By EUROPE*/
 router.get('/get_popularity_liked_general_video_travel_information_continent_europe', (req, res) => {
-  connection.query('SELECT * FROM popularity INNER JOIN liked ON id_popularity=liked.popularity_id_popularity INNER JOIN general_video ON id_general_video=liked.general_video_id_general_video INNER JOIN travel_information ON id_general_video=travel_information.general_video_id_general_video INNER JOIN continent ON id_continent=travel_information.continent_id_continent WHERE continent_id_continent=5 ORDER BY nb_like_popularity ASC LIMIT 12', (err, results) => {
+  connection.query('SELECT *, ROUND(100-(ISNULL(NULLIF(video_title,"")) + ISNULL(NULLIF(video_description,"")) + ISNULL(NULLIF(cover_picture,"")) + ISNULL(NULLIF(link_equipment,"")) + ISNULL(NULLIF(video_link,"")))*100/5) AS tx_remplissage FROM general_video INNER JOIN liked ON id_general_video=liked.general_video_id_general_video INNER JOIN popularity ON id_popularity=liked.popularity_id_popularity INNER JOIN travel_information ON id_general_video=travel_information.general_video_id_general_video INNER JOIN continent ON id_continent=travel_information.continent_id_continent WHERE continent_id_continent=5 ORDER BY nb_views DESC LIMIT 12', (err, results) => {
     if (err) {
       res.status(500).send('Erreur lors de la récupération des populaires');
     } else {
