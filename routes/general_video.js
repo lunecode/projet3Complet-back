@@ -9,7 +9,6 @@ router.get('/', (req, res) => {
 
 
 //***************************************/general_video/*********************************************************************************** */
-
 // récupération des données
 
 router.get('/get_general_video', (req, res) => {

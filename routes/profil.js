@@ -94,8 +94,6 @@ router.get('/get_profil_videaste_home/:offsetVideaste', (req, res) => {
       }
     });
 });
-
-
 //* ********************* route for profil Join general_video ************************* */
 
 router.get('/get_profil_general_video', (req, res) => {
@@ -113,6 +111,33 @@ router.get('/get_Profil_describe', (req, res) => {
   const offset = +req.params.offset
   // connection.query('SELECT * FROM profil LIMIT ? , 1;', [offset], (err, results) => {
     connection.query('SELECT * FROM profil ORDER BY id_profil DESC LIMIT 1', [offset], (err, results) => {
+      if (err) {
+        console.log(err);
+        
+        res.status(500).send('Erreur lors de la récupération des données');
+      }else{
+        res.json(results);
+      }
+    });
+});
+
+// insertion des ingredients
+router.post('/insert_profil_ingredients', (req, res) => {
+  const formData = req.body;
+  connection.query('INSERT INTO ingredients SET ?', formData, (err, results) => {
+    if (err) {
+      res.status(500).send("Erreur lors de l'insertion des données");
+    } else {
+      res.sendStatus(200);
+    }
+  });
+});
+
+
+// get ingredients
+router.get('/get_Profil_ingredients', (req, res) => {
+  const offset = +req.params.offset
+    connection.query('SELECT * FROM ingredients ORDER BY id_ingredients DESC LIMIT 1', [offset], (err, results) => {
       if (err) {
         console.log(err);
         
