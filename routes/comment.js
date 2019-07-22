@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
 // *************************Lecture de comment (commente une vidéo) ************************************
 
 router.get('/get_comment', (req, res) => {
-    connection.query('SELECT * FROM comment ', (err, results) => {
+    connection.query('SELECT * FROM comment ORDER BY id_comment DESC LIMIT 7', (err, results) => {
       if (err) {
         res.status(500).send('Erreur lors de la récupération de comment ');
       } else {
