@@ -9,6 +9,7 @@ router.get('/', (req, res) => {
 
 
 //***************************************/general_video/*********************************************************************************** */
+
 // récupération des données
 
 router.get('/get_general_video', (req, res) => {
@@ -48,11 +49,12 @@ router.put('/update_general_video/:id', (req, res) => {
   });
 });
 
+
 //suppression des données
 
 router.delete('/delete_general_video/:id', (req, res) => {
   const dropGeneralVideo = req.params.id;
-  connection.query('DELETE FROM general_video WHERE id_general_video = ?', [dropGeneralVideo], err => {
+  connection.query('DELETE FROM general_video WHERE profil_id_profil = ?', [dropGeneralVideo], err => {
     if (err) {
       console.log(err);
       res.status(500).send("Erreur lors de la suppression des données");
@@ -170,5 +172,17 @@ router.get('/get_Page_Afrique/:offset', (req, res) => {
       }
     });
 });
+
+ //get video/profil
+router.get('/get_video_id_profil/:id', (req, res) => {
+  const getVideoProfil = req.params.id
+  connection.query('SELECT * FROM general_video WHERE profil_id_profil= ? LIMIT 5', [getVideoProfil], (err, results) => {
+    if (err) {
+      res.status(500).send('Erreur dans la récupération des données');
+    } else {
+      res.json(results)
+    }
+  })
+ })
 
 module.exports = router;

@@ -1,5 +1,5 @@
 const express = require("express")
-const jwt = require("jsonwebtoken")
+// const jwt = require("jsonwebtoken")
 const Router = express.Router()
 const bcrypt = require('bcrypt')
 
@@ -18,8 +18,9 @@ Router.post('/registration', (req, res) => {
   const userData = {
     firstname: req.body.firstname,
     lastname: req.body.lastname,
+    email: req.body.email,
     password: req.body.password,
-    email: req.body.email
+    isAdmin: 0
   }
 
   User.findOne({

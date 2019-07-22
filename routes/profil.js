@@ -36,15 +36,8 @@ router.get('/get_profil', (req, res) => {
 });
 
 
-router.get('/get_profil', (req, res) => {
-  connection.query('SELECT * FROM profil', (err, results) => {
-      if (err) {
-        res.status(500).send('Erreur lors de la récupération des données');
-      }else{
-        res.json(results);
-      }
-    });
-});
+
+
 
 // insertion des données
 router.post('/insert_profil', (req, res) => {
@@ -58,6 +51,7 @@ router.post('/insert_profil', (req, res) => {
   });
 });
 
+
 // Mise a jour des données
 router.put('/update_profil/:id', (req, res) => {
   const idProfil = req.params.id;
@@ -70,6 +64,7 @@ router.put('/update_profil/:id', (req, res) => {
     }
   });
 });
+// Mise a jour des données
 
 // supression des données
 router.delete('/delete_profil/:id', (req, res) => {
