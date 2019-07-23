@@ -122,15 +122,15 @@ router.get('/get_general_video_home', (req, res) => {
 
 // GET VIDEO BY ID
 
-// router.get('/get_id_general_video', (req, res) => {
-//   connection.query('SELECT id_general_video FROM general_video ORDER BY id_general_video DESC', (err, results) => {
-//       if (err) {
-//         res.status(500).send('Erreur lors de la récupération des données');
-//       } else {
-//         res.json(results);
-//       }
-//     });
-// });
+router.get('/get_id_general_video', (req, res) => {
+  connection.query('SELECT id_general_video FROM general_video ORDER BY id_general_video DESC', (err, results) => {
+      if (err) {
+        res.status(500).send('Erreur lors de la récupération des données');
+      } else {
+        res.json(results);
+      }
+    });
+});
 
 
 
