@@ -146,6 +146,7 @@ router.get('/get_general_video_nextdestination', (req, res) => {
 });
 
 
+
 // ***********************************GET VIDEO WITH ID PROFIL******************************************
 
 
@@ -175,7 +176,45 @@ router.get('/get_general_video_travel_information/:id', (req, res) => {
   });
 });
 
+// GET TAUX DE REMPLISSAGE 
 
+router.get('/get_general_video_nextdestination_tauxderemplissage', (req, res) => {
+  connection.query('SELECT video_title, video_link,video_user,video_duration, ROUND(100-(ISNULL(NULLIF(video_title,"")) + ISNULL(NULLIF(video_link,"")) + ISNULL(NULLIF(video_user,"")) + ISNULL(NULLIF(video_duration,"")))*100/5) AS tx_remplissage FROM general_video', (err, results) => {
+    if (err) {
+      res.status(500).send('Erreur lors de la récupération des données');
+    } else {
+      res.json(results);
+    }
+  });
+});
+
+
+
+router.get('/get_general_video_lim/:offset', (req, res) => {
+  const offset = +req.params.offset
+  connection.query('SELECT * FROM general_video LIMIT ? , 4;', [offset], (err, results) => {
+      if (err) {
+        console.log(err);
+        
+        res.status(500).send('Erreur lors de la récupération des données');
+      }else{
+        res.json(results);
+      }
+    });
+});
+
+router.get('/get_Page_Afrique/:offset', (req, res) => {
+  const offset = +req.params.offset
+  connection.query('SELECT * FROM general_video LIMIT ? , 8;', [offset], (err, results) => {
+      if (err) {
+        console.log(err);
+        
+        res.status(500).send('Erreur lors de la récupération des données');
+      }else{
+        res.json(results);
+      }
+    });
+});
 
 
 module.exports = router;

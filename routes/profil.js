@@ -35,6 +35,17 @@ router.get('/get_profil', (req, res) => {
     });
 });
 
+
+router.get('/get_profil', (req, res) => {
+  connection.query('SELECT * FROM profil', (err, results) => {
+      if (err) {
+        res.status(500).send('Erreur lors de la récupération des données');
+      }else{
+        res.json(results);
+      }
+    });
+});
+
 // insertion des données
 router.post('/insert_profil', (req, res) => {
   const formData = req.body;
@@ -84,7 +95,6 @@ router.get('/get_profil_videaste_home/:offsetVideaste', (req, res) => {
     });
 });
 
-//  connection.query('SELECT * FROM general_video LIMIT ? , 5;', [offset], (err, results) => 
 
 //* ********************* route for profil Join general_video ************************* */
 
@@ -96,6 +106,21 @@ router.get('/get_profil_general_video', (req, res) => {
       res.json(results);
     }
   });
+});
+
+
+router.get('/get_Profil_describe', (req, res) => {
+  const offset = +req.params.offset
+  // connection.query('SELECT * FROM profil LIMIT ? , 1;', [offset], (err, results) => {
+    connection.query('SELECT * FROM profil ORDER BY id_profil DESC LIMIT 1', [offset], (err, results) => {
+      if (err) {
+        console.log(err);
+        
+        res.status(500).send('Erreur lors de la récupération des données');
+      }else{
+        res.json(results);
+      }
+    });
 });
 
 
