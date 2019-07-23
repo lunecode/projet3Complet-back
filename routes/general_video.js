@@ -175,7 +175,7 @@ router.get('/get_Page_Afrique/:offset', (req, res) => {
  //get video/profil
 router.get('/get_video_id_profil/:id', (req, res) => {
   const getVideoProfil = req.params.id
-  connection.query('SELECT * FROM general_video WHERE profil_id_profil= ?', [getVideoProfil], (err, results) => {
+  connection.query('SELECT * FROM general_video WHERE profil_id_profil= ? LIMIT 5', [getVideoProfil], (err, results) => {
     if (err) {
       res.status(500).send('Erreur dans la récupération des données');
     } else {
