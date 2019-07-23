@@ -120,17 +120,17 @@ router.get('/get_general_video_home', (req, res) => {
 
 
 
-// GET ID OF VIDEO
+// GET VIDEO BY ID
 
-router.get('/get_id_general_video', (req, res) => {
-  connection.query('SELECT id_general_video FROM general_video ORDER BY id_general_video DESC', (err, results) => {
-      if (err) {
-        res.status(500).send('Erreur lors de la récupération des données');
-      } else {
-        res.json(results);
-      }
-    });
-});
+// router.get('/get_id_general_video', (req, res) => {
+//   connection.query('SELECT id_general_video FROM general_video ORDER BY id_general_video DESC', (err, results) => {
+//       if (err) {
+//         res.status(500).send('Erreur lors de la récupération des données');
+//       } else {
+//         res.json(results);
+//       }
+//     });
+// });
 
 
 
@@ -161,6 +161,20 @@ router.get('/get_video_id_profil/:id', (req, res) => {
     }
   })
 })
+
+
+// TEST
+router.get('/get_general_video_travel_information/:id', (req, res) => {
+  const getVideoByProfil = req.params.id
+  connection.query('SELECT * from general_video JOIN travel_information ON id_general_video=travel_information.general_video_id_general_video WHERE profil_id_profil = ?', [getVideoByProfil], (err, results) => {
+    if (err) {
+      res.status(500).send('Erreur lors de la récupération des données');
+    } else {
+      res.json(results);
+    }
+  });
+});
+
 
 
 
