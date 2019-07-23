@@ -36,15 +36,8 @@ router.get('/get_profil', (req, res) => {
 });
 
 
-router.get('/get_profil', (req, res) => {
-  connection.query('SELECT * FROM profil', (err, results) => {
-      if (err) {
-        res.status(500).send('Erreur lors de la récupération des données');
-      }else{
-        res.json(results);
-      }
-    });
-});
+
+
 
 // insertion des données
 router.post('/insert_profil', (req, res) => {
@@ -58,6 +51,7 @@ router.post('/insert_profil', (req, res) => {
   });
 });
 
+
 // Mise a jour des données
 router.put('/update_profil/:id', (req, res) => {
   const idProfil = req.params.id;
@@ -70,6 +64,7 @@ router.put('/update_profil/:id', (req, res) => {
     }
   });
 });
+// Mise a jour des données
 
 // supression des données
 router.delete('/delete_profil/:id', (req, res) => {
@@ -94,8 +89,6 @@ router.get('/get_profil_videaste_home/:offsetVideaste', (req, res) => {
       }
     });
 });
-
-
 //* ********************* route for profil Join general_video ************************* */
 
 router.get('/get_profil_general_video', (req, res) => {
@@ -123,6 +116,43 @@ router.get('/get_Profil_describe', (req, res) => {
     });
 });
 
+// insertion des ingredients
+router.post('/insert_profil_ingredients', (req, res) => {
+  const formData = req.body;
+  connection.query('INSERT INTO ingredients SET ?', formData, (err, results) => {
+    if (err) {
+      res.status(500).send("Erreur lors de l'insertion des données");
+    } else {
+      res.sendStatus(200);
+    }
+  });
+});
 
+
+// get ingredients
+router.get('/get_Profil_ingredients', (req, res) => {
+  const offset = +req.params.offset
+    connection.query('SELECT * FROM ingredients ORDER BY id_ingredients DESC LIMIT 1', [offset], (err, results) => {
+      if (err) {
+        console.log(err);
+        
+        res.status(500).send('Erreur lors de la récupération des données');
+      }else{
+        res.json(results);
+      }
+    });
+});
+
+
+router.get('/get_video_for_profil_decription/:id', (req, res) => {
+  const getProfil = req.params.id
+  connection.query('SELECT * FROM profil WHERE id_profil = ?', [getProfil], (err, results) => {
+    if (err) {
+      res.status(500).send('Erreur dans la récupération des données');
+    } else {
+      res.json(results)
+    }
+  })
+})
 
 module.exports = router;

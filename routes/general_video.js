@@ -53,7 +53,7 @@ router.put('/update_general_video/:id', (req, res) => {
 
 router.delete('/delete_general_video/:id', (req, res) => {
   const dropGeneralVideo = req.params.id;
-  connection.query('DELETE FROM general_video WHERE id_general_video = ?', [dropGeneralVideo], err => {
+  connection.query('DELETE  FROM general_video WHERE profil_id_profil = ?', [dropGeneralVideo], err => {
     if (err) {
       console.log(err);
       res.status(500).send("Erreur lors de la suppression des données");
@@ -63,6 +63,29 @@ router.delete('/delete_general_video/:id', (req, res) => {
   });
 });
 
+
+router.get('/get_general_video_liked_popularitylimit', (req, res) => {
+  connection.query('SELECT * FROM general_video INNER JOIN liked ON id_general_video=liked.general_video_id_general_video INNER JOIN popularity ON id_popularity=liked.popularity_id_popularity LIMIT 4', (err, results) => {
+      if (err) {
+        res.status(500).send('Erreur lors de la récupération des données');
+      }else{
+        res.json(results);
+      }
+    });
+});
+
+router.get('/get_profil_limite1/:offset', (req, res) => {
+  const offset = +req.params.offset
+  connection.query('SELECT * FROM profil LIMIT ? , 1;', [offset], (err, results) => {
+      if (err) {
+        console.log(err);
+ 
+        res.status(500).send('Erreur lors de la récupération des données');
+      }else{
+        res.json(results);
+      }
+    });
+ });
 
 //************************ */JOINTURE /********************************************************** */
 
@@ -148,7 +171,6 @@ router.get('/get_general_video_nextdestination', (req, res) => {
 
 
 // ***********************************GET VIDEO WITH ID PROFIL******************************************
-
 
 
 // TEST OK WITH POSTMAN

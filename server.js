@@ -21,7 +21,6 @@ app.use(bodyParser.json());
 
 app.use('/login', login)
 app.use('/registration', registration)
-
 app.use('/change_history_video', routes.change_history_video);
 app.use('/comment', routes.comment);
 app.use('/contact_request', routes.contact_request);
