@@ -144,5 +144,15 @@ router.get('/get_Profil_ingredients', (req, res) => {
 });
 
 
+router.get('/get_video_for_profil_decription/:id', (req, res) => {
+  const getProfil = req.params.id
+  connection.query('SELECT * FROM profil WHERE id_profil = ?', [getProfil], (err, results) => {
+    if (err) {
+      res.status(500).send('Erreur dans la récupération des données');
+    } else {
+      res.json(results)
+    }
+  })
+})
 
 module.exports = router;

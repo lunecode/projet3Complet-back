@@ -64,6 +64,29 @@ router.delete('/delete_general_video/:id', (req, res) => {
 });
 
 
+router.get('/get_general_video_liked_popularitylimit', (req, res) => {
+  connection.query('SELECT * FROM general_video INNER JOIN liked ON id_general_video=liked.general_video_id_general_video INNER JOIN popularity ON id_popularity=liked.popularity_id_popularity LIMIT 4', (err, results) => {
+      if (err) {
+        res.status(500).send('Erreur lors de la récupération des données');
+      }else{
+        res.json(results);
+      }
+    });
+});
+
+router.get('/get_profil_limite1/:offset', (req, res) => {
+  const offset = +req.params.offset
+  connection.query('SELECT * FROM profil LIMIT ? , 1;', [offset], (err, results) => {
+      if (err) {
+        console.log(err);
+ 
+        res.status(500).send('Erreur lors de la récupération des données');
+      }else{
+        res.json(results);
+      }
+    });
+ });
+
 //************************ */JOINTURE /********************************************************** */
 
 // récupération des données general_video/popularity/liked
@@ -120,17 +143,17 @@ router.get('/get_general_video_home', (req, res) => {
 
 
 
-// GET ID OF VIDEO
+// GET VIDEO BY ID
 
-router.get('/get_id_general_video', (req, res) => {
-  connection.query('SELECT id_general_video FROM general_video ORDER BY id_general_video DESC', (err, results) => {
-      if (err) {
-        res.status(500).send('Erreur lors de la récupération des données');
-      } else {
-        res.json(results);
-      }
-    });
-});
+// router.get('/get_id_general_video', (req, res) => {
+//   connection.query('SELECT id_general_video FROM general_video ORDER BY id_general_video DESC', (err, results) => {
+//       if (err) {
+//         res.status(500).send('Erreur lors de la récupération des données');
+//       } else {
+//         res.json(results);
+//       }
+//     });
+// });
 
 
 
@@ -144,6 +167,49 @@ router.get('/get_general_video_nextdestination', (req, res) => {
     }
   });
 });
+
+
+
+// ***********************************GET VIDEO WITH ID PROFIL******************************************
+
+
+// TEST OK WITH POSTMAN
+router.get('/get_video_id_profil/:id', (req, res) => {
+  const getVideoProfil = req.params.id
+  connection.query('SELECT * FROM general_video WHERE profil_id_profil = ?', [getVideoProfil], (err, results) => {
+    if (err) {
+      res.status(500).send('Erreur dans la récupération des données');
+    } else {
+      res.json(results)
+    }
+  })
+})
+
+
+// TEST
+router.get('/get_general_video_travel_information/:id', (req, res) => {
+  const getVideoByProfil = req.params.id
+  connection.query('SELECT * from general_video JOIN travel_information ON id_general_video=travel_information.general_video_id_general_video WHERE profil_id_profil = ?', [getVideoByProfil], (err, results) => {
+    if (err) {
+      res.status(500).send('Erreur lors de la récupération des données');
+    } else {
+      res.json(results);
+    }
+  });
+});
+
+// GET TAUX DE REMPLISSAGE 
+
+router.get('/get_general_video_nextdestination_tauxderemplissage', (req, res) => {
+  connection.query('SELECT video_title, video_link,video_user,video_duration, ROUND(100-(ISNULL(NULLIF(video_title,"")) + ISNULL(NULLIF(video_link,"")) + ISNULL(NULLIF(video_user,"")) + ISNULL(NULLIF(video_duration,"")))*100/5) AS tx_remplissage FROM general_video', (err, results) => {
+    if (err) {
+      res.status(500).send('Erreur lors de la récupération des données');
+    } else {
+      res.json(results);
+    }
+  });
+});
+
 
 
 router.get('/get_general_video_lim/:offset', (req, res) => {
@@ -172,16 +238,5 @@ router.get('/get_Page_Afrique/:offset', (req, res) => {
     });
 });
 
- //get video/profil
-router.get('/get_video_id_profil/:id', (req, res) => {
-  const getVideoProfil = req.params.id
-  connection.query('SELECT * FROM general_video WHERE profil_id_profil= ? LIMIT 5', [getVideoProfil], (err, results) => {
-    if (err) {
-      res.status(500).send('Erreur dans la récupération des données');
-    } else {
-      res.json(results)
-    }
-  })
- })
 
 module.exports = router;
