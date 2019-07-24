@@ -7,9 +7,9 @@ Mysql Workbench, NodeJS, Express, Mysql, bcrypt, body-parser, cors, jsonwebtoken
 
 ## **Process to follow :** 
 
-*1 - Clone the Github project and execute "npm i" in the terminal for install dependancy
+* Clone the Github project and execute "npm i" in the terminal for install dependancy
 
-*2 - Import the database SQL structure empty or with data with the file in /database_Schema_SQL folder 
+* Import the database SQL structure empty or with data with the file in /database_Schema_SQL folder 
 
 *3 - Change in the file /conf.js and /database/db.js the user and password sql
 
