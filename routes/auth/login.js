@@ -14,7 +14,7 @@ Router.get("/", (req, res, next) => {
 
 
 
-// http://localhost:3000/login/login   TEST OK WITH POSTMAN
+// http://localhost:3000/login/login
 
 Router.post('/login', (req, res) => {
   // console.log(req.body)
@@ -71,14 +71,6 @@ Router.post("/protected", (req, res, next) => {
     // return res.status(200).send({ mess: 'Token verifié', objectTests })
   })
 })
-
-
-
-
-// LOGOUT NON TESTE
-Router.get('/logout', function(req, res) {
-  res.status(200).send({ auth: false, token: null });
-});
 
 
 module.exports = Router

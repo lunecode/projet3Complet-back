@@ -1,5 +1,4 @@
 const express = require("express")
-// const jwt = require("jsonwebtoken")
 const Router = express.Router()
 const bcrypt = require('bcrypt')
 
@@ -11,7 +10,7 @@ Router.get("/", (req, res, next) => {
 })
 
 
-//  http://localhost:3000/registration/registration    TEST OK WITH POSTMAN
+//  http://localhost:3000/registration/registration
 
 
 Router.post('/registration', (req, res) => {

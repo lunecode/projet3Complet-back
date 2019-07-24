@@ -79,7 +79,6 @@ router.get('/get_profil_limite1/:offset', (req, res) => {
   connection.query('SELECT * FROM profil LIMIT ? , 1;', [offset], (err, results) => {
       if (err) {
         console.log(err);
- 
         res.status(500).send('Erreur lors de la récupération des données');
       }else{
         res.json(results);
