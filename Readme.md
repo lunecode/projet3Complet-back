@@ -13,6 +13,4 @@ Mysql Workbench, NodeJS, Express, Mysql, bcrypt, body-parser, cors, jsonwebtoken
 
 * Change in the file /conf.js and /database/db.js the user and password sql
 
-* Install dependency with the commande line " npm i " in the terminal
-
 * For start the back end use " npm start" in the terminal, you need to start the back first and the front after
