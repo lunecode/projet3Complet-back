@@ -41,15 +41,6 @@ CREATE TABLE `activity` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `activity`
---
-
-LOCK TABLES `activity` WRITE;
-/*!40000 ALTER TABLE `activity` DISABLE KEYS */;
-/*!40000 ALTER TABLE `activity` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `change_history_like_comment`
 --
 
@@ -68,15 +59,6 @@ CREATE TABLE `change_history_like_comment` (
   PRIMARY KEY (`id_change_history_like_comment`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `change_history_like_comment`
---
-
-LOCK TABLES `change_history_like_comment` WRITE;
-/*!40000 ALTER TABLE `change_history_like_comment` DISABLE KEYS */;
-/*!40000 ALTER TABLE `change_history_like_comment` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `change_history_profil`
@@ -102,15 +84,6 @@ CREATE TABLE `change_history_profil` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `change_history_profil`
---
-
-LOCK TABLES `change_history_profil` WRITE;
-/*!40000 ALTER TABLE `change_history_profil` DISABLE KEYS */;
-/*!40000 ALTER TABLE `change_history_profil` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `change_history_travel_step`
 --
 
@@ -129,15 +102,6 @@ CREATE TABLE `change_history_travel_step` (
   PRIMARY KEY (`id_change_history_travel_step`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `change_history_travel_step`
---
-
-LOCK TABLES `change_history_travel_step` WRITE;
-/*!40000 ALTER TABLE `change_history_travel_step` DISABLE KEYS */;
-/*!40000 ALTER TABLE `change_history_travel_step` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `change_history_video`
@@ -161,15 +125,6 @@ CREATE TABLE `change_history_video` (
   CONSTRAINT `fk_change_history_video_profil1` FOREIGN KEY (`profil_id_profil`) REFERENCES `profil` (`id_profil`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `change_history_video`
---
-
-LOCK TABLES `change_history_video` WRITE;
-/*!40000 ALTER TABLE `change_history_video` DISABLE KEYS */;
-/*!40000 ALTER TABLE `change_history_video` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `comment`
@@ -200,16 +155,6 @@ CREATE TABLE `comment` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `comment`
---
-
-LOCK TABLES `comment` WRITE;
-/*!40000 ALTER TABLE `comment` DISABLE KEYS */;
-INSERT INTO `comment` VALUES (2,NULL,NULL,NULL,'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore',NULL,NULL,1,NULL,NULL);
-/*!40000 ALTER TABLE `comment` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `comment_has_change_history_like_comment`
 --
 
@@ -226,15 +171,6 @@ CREATE TABLE `comment_has_change_history_like_comment` (
   CONSTRAINT `fk_comment_has_change_history_like_comment_comment1` FOREIGN KEY (`comment_id_comment`) REFERENCES `comment` (`id_comment`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `comment_has_change_history_like_comment`
---
-
-LOCK TABLES `comment_has_change_history_like_comment` WRITE;
-/*!40000 ALTER TABLE `comment_has_change_history_like_comment` DISABLE KEYS */;
-/*!40000 ALTER TABLE `comment_has_change_history_like_comment` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `contact_request`
@@ -258,15 +194,6 @@ CREATE TABLE `contact_request` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `contact_request`
---
-
-LOCK TABLES `contact_request` WRITE;
-/*!40000 ALTER TABLE `contact_request` DISABLE KEYS */;
-/*!40000 ALTER TABLE `contact_request` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `continent`
 --
 
@@ -279,16 +206,6 @@ CREATE TABLE `continent` (
   PRIMARY KEY (`id_continent`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `continent`
---
-
-LOCK TABLES `continent` WRITE;
-/*!40000 ALTER TABLE `continent` DISABLE KEYS */;
-INSERT INTO `continent` VALUES (1,'Autres'),(2,'Afrique'),(3,'Amérique'),(4,'Asie-Océanie'),(5,'Europe');
-/*!40000 ALTER TABLE `continent` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `favorites`
@@ -304,15 +221,6 @@ CREATE TABLE `favorites` (
   PRIMARY KEY (`id_favorites`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `favorites`
---
-
-LOCK TABLES `favorites` WRITE;
-/*!40000 ALTER TABLE `favorites` DISABLE KEYS */;
-/*!40000 ALTER TABLE `favorites` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `favorites_has_profil`
@@ -333,15 +241,6 @@ CREATE TABLE `favorites_has_profil` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `favorites_has_profil`
---
-
-LOCK TABLES `favorites_has_profil` WRITE;
-/*!40000 ALTER TABLE `favorites_has_profil` DISABLE KEYS */;
-/*!40000 ALTER TABLE `favorites_has_profil` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `follower`
 --
 
@@ -358,16 +257,6 @@ CREATE TABLE `follower` (
   PRIMARY KEY (`id_follower`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `follower`
---
-
-LOCK TABLES `follower` WRITE;
-/*!40000 ALTER TABLE `follower` DISABLE KEYS */;
-INSERT INTO `follower` VALUES (1,'Jeremias Del Pozo','Abonné à vos aventure depuis 27 jours',NULL,'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNy_3EuiT67YMJff9uMLStwO2j2z40CkAVRdo5HVSbO7ZX8bdj',NULL),(2,'Alicia Stanger','Abonné à vos aventure depuis 27 jours',NULL,'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNy_3EuiT67YMJff9uMLStwO2j2z40CkAVRdo5HVSbO7ZX8bdj',NULL),(3,'Donat Twerski','Abonné à vos aventure depuis 27 jours',NULL,'https://i.ytimg.com/vi/BfCwN4iy6T8/maxresdefault.jpg',NULL),(4,'Daisy Murphy','Abonné à vos aventure depuis 27 jours',NULL,'https://cdn.pixabay.com/photo/2017/03/26/12/13/countryside-2175353_960_720.jpg',NULL),(5,'Mohsin Salahi','Abonné à vos aventure depuis 27 jours',NULL,'https://cdn.pixabay.com/photo/2017/02/22/20/02/landscape-2090495_960_720.jpg',NULL),(6,'Kong Yijun','Abonné à vos aventure depuis 27 jours',NULL,'https://cdn.pixabay.com/photo/2015/07/06/13/58/arlberg-pass-833326__340.jpg',NULL);
-/*!40000 ALTER TABLE `follower` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `following`
@@ -388,16 +277,6 @@ CREATE TABLE `following` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `following`
---
-
-LOCK TABLES `following` WRITE;
-/*!40000 ALTER TABLE `following` DISABLE KEYS */;
-INSERT INTO `following` VALUES (1,'Ethan Evans','Vous êtes abonnés depuis 25 jours',NULL,'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzJQg0Q_-8aQb6aQKs0oVuZSZJZi4-gX6Fndyo8e5RVymebp9m5w',5),(2,'Malin Quist','Vous êtes abonnés depuis 25 jours',NULL,'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNy_3EuiT67YMJff9uMLStwO2j2z40CkAVRdo5HVSbO7ZX8bdj',9),(3,'Chineze Afemafuna','Vous êtes abonnés depuis 25 jours',NULL,'https://i.ytimg.com/vi/BfCwN4iy6T8/maxresdefault.jpg',4),(4,'Faadhi Al Rahman','Vous êtes abonnés depuis 25 jours',NULL,'https://cdn.pixabay.com/photo/2017/03/26/12/13/countryside-2175353_960_720.jpg',9),(5,'Pedro Amorim','Vous êtes abonnés depuis 25 jours',NULL,'https://cdn.pixabay.com/photo/2017/02/22/20/02/landscape-2090495_960_720.jpg',13),(6,'Sua Hua','Vous êtes abonnés depuis 25 jours',NULL,'https://cdn.pixabay.com/photo/2015/07/06/13/58/arlberg-pass-833326__340.jpg',7);
-/*!40000 ALTER TABLE `following` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `general_video`
 --
 
@@ -408,7 +287,7 @@ CREATE TABLE `general_video` (
   `id_general_video` int(11) NOT NULL AUTO_INCREMENT,
   `video_position` int(11) DEFAULT NULL,
   `video_title` varchar(100) DEFAULT NULL,
-  `video_description` varchar(150) DEFAULT NULL,
+  `video_description` text,
   `video_link` text,
   `video_user` varchar(150) DEFAULT NULL,
   `video_size` int(11) DEFAULT NULL,
@@ -431,16 +310,6 @@ CREATE TABLE `general_video` (
   CONSTRAINT `fk_general_video_profil1` FOREIGN KEY (`profil_id_profil`) REFERENCES `profil` (`id_profil`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `general_video`
---
-
-LOCK TABLES `general_video` WRITE;
-/*!40000 ALTER TABLE `general_video` DISABLE KEYS */;
-INSERT INTO `general_video` VALUES (1,1,'Road Trip','Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam','WFQhSFUUF3U','Jean Dujardin',NULL,'10:02',NULL,NULL,NULL,NULL,'Crosstour Caméra Sport',NULL,NULL,NULL,NULL,NULL,'https://image.noelshack.com/fichiers/2019/28/4/1562840200-usa.jpg',60,1),(2,2,'Le berceau du Yoga','Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam','44rTTLjZZz4','Rachid Badou',NULL,'21:35',NULL,NULL,NULL,NULL,'Crosstour 4K Caméra Sport',NULL,NULL,NULL,NULL,NULL,'https://image.noelshack.com/fichiers/2019/28/3/1562768813-inde.jpg',80,5),(3,3,'Les grands Lacs','Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam','WteZwxsvICc','Tony Lee',NULL,'05:41',NULL,NULL,NULL,NULL,'DJI Osmo Pocket',NULL,NULL,NULL,NULL,NULL,'https://image.noelshack.com/fichiers/2019/28/3/1562768683-canada.jpg',70,2),(4,4,'L\'île de beauté','Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam','G7865-ME21A','Mamadou Absadoum',NULL,'06:31',NULL,NULL,NULL,NULL,'Caméscope 4K Vlogging',NULL,NULL,NULL,NULL,NULL,'https://image.noelshack.com/fichiers/2019/28/3/1562768683-corse-ile-de-beaute.jpg',60,3),(5,5,'Masai Mara','Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam','A-9YKfh-oM4','Estelle Dupuis',NULL,'12:53',NULL,NULL,NULL,NULL,'Campark Caméra Sport',NULL,NULL,NULL,NULL,NULL,'https://image.noelshack.com/fichiers/2019/28/3/1562768683-kenya.jpg',60,4),(6,6,'City of Gold','Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam','SLaYPmhse30','Caroline Moujin',NULL,'09:02',NULL,NULL,NULL,NULL,'WiMiUS Q1 Caméra Sport',NULL,NULL,NULL,NULL,NULL,'https://image.noelshack.com/fichiers/2019/28/3/1562781111-dubai.jpg',90,7),(7,7,'Au rythme de la Samba','Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam','y0d8zaI_wgg','Hector Benardin',NULL,'10:12',NULL,NULL,NULL,NULL,'ATian TAKSTAR the SGC-598',NULL,NULL,NULL,NULL,NULL,'https://image.noelshack.com/fichiers/2019/28/3/1562781111-bresil.jpg',100,6),(8,8,'Le pays du soleil levant',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'https://img.ev.mu/images/portfolio/pays/113/960x640/852192.jpg',NULL,1),(9,NULL,'A la découverte de l\'île rouge','Un circuit pour parcourir les différents paysages de Madagascar','1roGkBs8NbA',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Sony Alpha 7 ',NULL,NULL,NULL,NULL,NULL,'https://image.noelshack.com/fichiers/2019/29/1/1563177376-madagascar.jpg',NULL,1);
-/*!40000 ALTER TABLE `general_video` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `liked`
@@ -469,16 +338,6 @@ CREATE TABLE `liked` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `liked`
---
-
-LOCK TABLES `liked` WRITE;
-/*!40000 ALTER TABLE `liked` DISABLE KEYS */;
-INSERT INTO `liked` VALUES (1,NULL,NULL,'Jean Dujardin',NULL,1,1,1),(2,NULL,NULL,'Tony Lee',NULL,2,2,2),(3,NULL,NULL,'Mamadou Absadoum',NULL,3,3,3),(4,NULL,NULL,'Estelle Dupuis',NULL,4,4,4),(5,NULL,NULL,'Rachid Badou',NULL,5,5,5),(6,NULL,NULL,'Hector Bernardin',NULL,6,6,6),(7,NULL,NULL,'Caroline Moujin',NULL,7,7,7);
-/*!40000 ALTER TABLE `liked` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `notification`
 --
 
@@ -501,15 +360,6 @@ CREATE TABLE `notification` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `notification`
---
-
-LOCK TABLES `notification` WRITE;
-/*!40000 ALTER TABLE `notification` DISABLE KEYS */;
-/*!40000 ALTER TABLE `notification` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `playlist`
 --
 
@@ -529,15 +379,6 @@ CREATE TABLE `playlist` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `playlist`
---
-
-LOCK TABLES `playlist` WRITE;
-/*!40000 ALTER TABLE `playlist` DISABLE KEYS */;
-/*!40000 ALTER TABLE `playlist` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `popularity`
 --
 
@@ -554,16 +395,6 @@ CREATE TABLE `popularity` (
   PRIMARY KEY (`id_popularity`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `popularity`
---
-
-LOCK TABLES `popularity` WRITE;
-/*!40000 ALTER TABLE `popularity` DISABLE KEYS */;
-INSERT INTO `popularity` VALUES (1,123,103,NULL,NULL,NULL),(2,523,421,NULL,NULL,NULL),(3,421,235,NULL,NULL,NULL),(4,56,23,NULL,NULL,NULL),(5,241,125,NULL,NULL,NULL),(6,143,80,NULL,NULL,NULL),(7,369,42,NULL,NULL,NULL);
-/*!40000 ALTER TABLE `popularity` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `profil`
@@ -608,16 +439,6 @@ CREATE TABLE `profil` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `profil`
---
-
-LOCK TABLES `profil` WRITE;
-/*!40000 ALTER TABLE `profil` DISABLE KEYS */;
-INSERT INTO `profil` VALUES (1,'Dujardin','Jean','','lui','Jean@wild.fr',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'$2y$10$wW8oRNIvrJDB0zoDdrl82uNCeXlahAsbd20QVMHHVG0YoLue1Mc.C','wildforget',NULL,NULL,NULL,NULL,NULL,0),(2,'Lee','Tony',NULL,'lui','Tony@wild.fr',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'$2b$10$MBm4Nz7vqxn.0lC5yzGbL.Llvz1qr8c.kPgmFon7HaZbbdKDmX7L6',NULL,NULL,NULL,NULL,NULL,NULL,0),(3,'Absadoum','Mamadou',NULL,'lui','Mamadou@wild.fr',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'$2b$10$YMraX8EmLX/kXe1V8OqRlOXi9JBVY4KjXomyo3oyXnX2LzWw3snnG',NULL,NULL,NULL,NULL,NULL,NULL,0),(4,'Dupuis','Estelle','','elle','Estelle@wild.fr',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'$2b$10$9yF5KjqNRdRsqL7ijjp8m.M5jXaOtDw0ixTHVScL6/LJwIOEGC4NK',NULL,NULL,NULL,NULL,NULL,NULL,0),(5,'Badou','Rachid','','lui','Rachid@wild.fr',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'$2b$10$rJbvYEFZF.p50QA2DoUzl.NzmvN5tkSc./nevLMXe1V7c.PX4ln8u',NULL,NULL,NULL,NULL,NULL,NULL,0),(6,'Benardin','Hector','','lui','Hector@wild.fr',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'$2b$10$/sXWvRf1cluwqiJcsMgQ9uFBkomNyvBEcYiqtYccKqcvSrTRjcE62',NULL,NULL,NULL,NULL,NULL,NULL,0),(7,'Caroline','Moujin',NULL,NULL,'Caroline@wild.fr',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'$2b$10$ohauRGbzg8NeSCHCbR04QuFSMBDyOcfQp9r9GeyqfFD84pS5BLK0y',NULL,NULL,NULL,NULL,NULL,NULL,0),(8,'Jonas','Dupuis',NULL,NULL,'Jonas@wild.fr',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'$2b$10$CtZbQzgAHMN6Cx2g2B0L1eWs8oIpbQFOc9r6kvNiWCcJ5G2M7JjFS',NULL,NULL,NULL,NULL,NULL,NULL,0);
-/*!40000 ALTER TABLE `profil` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `profil_has_change_history_profil`
 --
 
@@ -634,15 +455,6 @@ CREATE TABLE `profil_has_change_history_profil` (
   CONSTRAINT `fk_profil_has_change_history_profil_profil1` FOREIGN KEY (`profil_id_profil`) REFERENCES `profil` (`id_profil`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `profil_has_change_history_profil`
---
-
-LOCK TABLES `profil_has_change_history_profil` WRITE;
-/*!40000 ALTER TABLE `profil_has_change_history_profil` DISABLE KEYS */;
-/*!40000 ALTER TABLE `profil_has_change_history_profil` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `profil_has_change_history_video`
@@ -663,15 +475,6 @@ CREATE TABLE `profil_has_change_history_video` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `profil_has_change_history_video`
---
-
-LOCK TABLES `profil_has_change_history_video` WRITE;
-/*!40000 ALTER TABLE `profil_has_change_history_video` DISABLE KEYS */;
-/*!40000 ALTER TABLE `profil_has_change_history_video` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `profil_has_follower`
 --
 
@@ -688,15 +491,6 @@ CREATE TABLE `profil_has_follower` (
   CONSTRAINT `fk_profil_has_follower_profil1` FOREIGN KEY (`profil_id_profil`) REFERENCES `profil` (`id_profil`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `profil_has_follower`
---
-
-LOCK TABLES `profil_has_follower` WRITE;
-/*!40000 ALTER TABLE `profil_has_follower` DISABLE KEYS */;
-/*!40000 ALTER TABLE `profil_has_follower` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `profil_has_following`
@@ -717,15 +511,6 @@ CREATE TABLE `profil_has_following` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `profil_has_following`
---
-
-LOCK TABLES `profil_has_following` WRITE;
-/*!40000 ALTER TABLE `profil_has_following` DISABLE KEYS */;
-/*!40000 ALTER TABLE `profil_has_following` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `profil_has_playlist`
 --
 
@@ -744,15 +529,6 @@ CREATE TABLE `profil_has_playlist` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `profil_has_playlist`
---
-
-LOCK TABLES `profil_has_playlist` WRITE;
-/*!40000 ALTER TABLE `profil_has_playlist` DISABLE KEYS */;
-/*!40000 ALTER TABLE `profil_has_playlist` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `profil_has_popularity`
 --
 
@@ -769,15 +545,6 @@ CREATE TABLE `profil_has_popularity` (
   CONSTRAINT `fk_profil_has_popularity_profil1` FOREIGN KEY (`profil_id_profil`) REFERENCES `profil` (`id_profil`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `profil_has_popularity`
---
-
-LOCK TABLES `profil_has_popularity` WRITE;
-/*!40000 ALTER TABLE `profil_has_popularity` DISABLE KEYS */;
-/*!40000 ALTER TABLE `profil_has_popularity` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `travel_information`
@@ -804,16 +571,6 @@ CREATE TABLE `travel_information` (
   CONSTRAINT `fk_travel_information_general_video1` FOREIGN KEY (`general_video_id_general_video`) REFERENCES `general_video` (`id_general_video`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `travel_information`
---
-
-LOCK TABLES `travel_information` WRITE;
-/*!40000 ALTER TABLE `travel_information` DISABLE KEYS */;
-INSERT INTO `travel_information` VALUES (1,'États-Unis',NULL,12,1,'$',400,500,'En famille',1,3),(2,'Inde',NULL,20,1,'$',500,600,'En couple',2,4),(3,'Canada',NULL,14,1,'$',500,400,'Aventurier seul',3,3),(4,'France',NULL,7,1,'€',500,500,'En famille',4,5),(5,'Kenya',NULL,15,NULL,'€',350,600,'En famille',5,2),(6,'Émirats arabes unis',NULL,10,NULL,'$',650,800,'Entre amis',6,4),(7,'Brésil',NULL,16,NULL,'$',420,550,'Entre amis',7,3),(8,'Japon','2017-07-04',15,NULL,NULL,800,500,'En famille',8,4),(9,'Madagascar','2018-10-10',20,NULL,NULL,850,600,'En famille',9,2);
-/*!40000 ALTER TABLE `travel_information` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `travel_step`
@@ -873,16 +630,6 @@ CREATE TABLE `travel_step` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `travel_step`
---
-
-LOCK TABLES `travel_step` WRITE;
-/*!40000 ALTER TABLE `travel_step` DISABLE KEYS */;
-INSERT INTO `travel_step` VALUES (1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'South Los Angeles','Vallée de San Fernando','Hollywood',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Charlie Russell','Fritz Railroad',NULL,NULL,NULL,'One Star',NULL,NULL,NULL,NULL,NULL,'Museum of Modern Art','Metropolitan Museum of Art',NULL,NULL,NULL,NULL,'Golf',NULL,NULL,NULL,1),(2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Rishikesh','Jaipur','Jodhpur',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'AnnaMaya','Spring',NULL,NULL,NULL,'Bukhara',NULL,NULL,NULL,NULL,NULL,'Andhra Pradesh',NULL,NULL,NULL,NULL,NULL,'',NULL,NULL,NULL,2),(3,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Le Mile end','Le Plateau','Le vieux Montréal',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Josephine','Lola Rosa',NULL,NULL,NULL,'The Great Canadian',NULL,NULL,NULL,NULL,NULL,'Le vieux Port','L\'oratoire Saint-Joseph',NULL,NULL,NULL,NULL,'Saut en parachute',NULL,NULL,NULL,3),(4,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'La rue Fesch','La place Foch','Le sentier du Patrimoine',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Terra Cotta','A Nepita',NULL,NULL,NULL,NULL,'Natation',NULL,NULL,NULL,4),(5,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Nairobi','Kibera',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Sikia Fine','Tatu Restaurant',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,5),(6,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Jumerirah','Dubaî Marina',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,6),(7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Fortaleza','Porto Alegre',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,7),(8,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Transports en commun',NULL,'Akihabara','Asakusa',NULL,NULL,'Hotel','Chez l\'habitant',NULL,NULL,NULL,NULL,'Kitaohji Teigeki',NULL,NULL,NULL,NULL,NULL,'Tokyo',NULL,NULL,NULL,NULL,NULL,'Shibuya',NULL,NULL,NULL,NULL,NULL,'Golf',NULL,NULL,NULL,8),(9,NULL,1,NULL,NULL,20,NULL,'Avion','Voiture',NULL,'Antanavarivo','Analakely',NULL,'Centre névralgique de la capitale, avec le marché.','L\'hôtel Baobab','L\'hôtel Hilton ','La maison de Robert',NULL,NULL,NULL,'Shalimar','Dzama','Le Carré',NULL,NULL,NULL,'Kudéta','Suite 101','Le Six',NULL,NULL,NULL,'Le Rova','Le marché de Zuma','Le parc Isalo',NULL,NULL,NULL,'Saut en parachute',NULL,NULL,NULL,9);
-/*!40000 ALTER TABLE `travel_step` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `travel_step_has_change_history_travel_step`
 --
 
@@ -901,15 +648,6 @@ CREATE TABLE `travel_step_has_change_history_travel_step` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `travel_step_has_change_history_travel_step`
---
-
-LOCK TABLES `travel_step_has_change_history_travel_step` WRITE;
-/*!40000 ALTER TABLE `travel_step_has_change_history_travel_step` DISABLE KEYS */;
-/*!40000 ALTER TABLE `travel_step_has_change_history_travel_step` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `watch_later`
 --
 
@@ -923,15 +661,6 @@ CREATE TABLE `watch_later` (
   PRIMARY KEY (`id_watch_later`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `watch_later`
---
-
-LOCK TABLES `watch_later` WRITE;
-/*!40000 ALTER TABLE `watch_later` DISABLE KEYS */;
-/*!40000 ALTER TABLE `watch_later` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `watch_later_has_profil`
@@ -950,15 +679,6 @@ CREATE TABLE `watch_later_has_profil` (
   CONSTRAINT `fk_watch_later_has_profil_watch_later1` FOREIGN KEY (`watch_later_id_watch_later`) REFERENCES `watch_later` (`id_watch_later`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `watch_later_has_profil`
---
-
-LOCK TABLES `watch_later_has_profil` WRITE;
-/*!40000 ALTER TABLE `watch_later_has_profil` DISABLE KEYS */;
-/*!40000 ALTER TABLE `watch_later_has_profil` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -969,4 +689,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-07-23 16:30:19
+-- Dump completed on 2019-07-24 14:31:35
